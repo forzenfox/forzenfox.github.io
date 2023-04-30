@@ -6,7 +6,7 @@
     "name": "佛系码农",
     "start_url": ".",
     "description": "就是你小子悄悄咪咪把bug写出来的？",
-    "short_name": "${shortName}",
+    "short_name": "佛系码农",
     "icons": [
         {
             "sizes": "48x48",
