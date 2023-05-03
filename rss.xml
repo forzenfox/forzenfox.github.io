@@ -6,16 +6,38 @@
     <atom:link href="https://forzenfox.github.io/rss.xml" rel="self" type="application/rss+xml"/>
     <description>就是你小子悄悄咪咪把bug写出来的？</description>
     <generator>Solo, v4.4.0, https://b3log.org/solo</generator>
-    <lastBuildDate>Sun, 30 Apr 2023 16:45:59 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 03 May 2023 16:48:56 +0800</lastBuildDate>
     <language>zh-cn</language>
+    <item>
+      <title>使用 Nginx 做代理服务器实现上传限速</title>
+      <link>https://forzenfox.github.io/articles/2023/05/03/1683102975873.html</link>
+      <description/>
+      <author>forzenfox</author>
+      <guid>https://forzenfox.github.io/articles/2023/05/03/1683102975873.html</guid>
+      <category>实战</category>
+      <category>Nginx</category>
+      <category>Docker</category>
+      <pubDate>Wed, 03 May 2023 16:36:15 +0800</pubDate>
+    </item>
+    <item>
+      <title>如何实现在容器内部限速</title>
+      <link>https://forzenfox.github.io/articles/2023/05/03/1683102869814.html</link>
+      <description/>
+      <author>forzenfox</author>
+      <guid>https://forzenfox.github.io/articles/2023/05/03/1683102869814.html</guid>
+      <category>Linux</category>
+      <category>实战</category>
+      <category>Docker</category>
+      <pubDate>Wed, 03 May 2023 16:34:29 +0800</pubDate>
+    </item>
     <item>
       <title>Java 8 - CompletableFuture</title>
       <link>https://forzenfox.github.io/articles/2022/04/26/1650947125974.html</link>
       <description/>
       <author>forzenfox</author>
       <guid>https://forzenfox.github.io/articles/2022/04/26/1650947125974.html</guid>
-      <category>java</category>
       <category>多线程</category>
+      <category>java</category>
       <pubDate>Tue, 26 Apr 2022 12:25:26 +0800</pubDate>
     </item>
     <item>
@@ -24,8 +46,8 @@
       <description/>
       <author>forzenfox</author>
       <guid>https://forzenfox.github.io/articles/2022/04/02/1648886248605.html</guid>
-      <category>SpringFramework</category>
       <category>java</category>
+      <category>SpringFramework</category>
       <category>学习笔记</category>
       <pubDate>Sat, 02 Apr 2022 15:57:28 +0800</pubDate>
     </item>
@@ -35,9 +57,9 @@
       <description/>
       <author>forzenfox</author>
       <guid>https://forzenfox.github.io/articles/2022/03/13/1647154841949.html</guid>
-      <category>数据库</category>
       <category>Mysql</category>
       <category>sql</category>
+      <category>数据库</category>
       <pubDate>Sun, 13 Mar 2022 15:53:24 +0800</pubDate>
     </item>
     <item>
@@ -46,9 +68,9 @@
       <description/>
       <author>forzenfox</author>
       <guid>https://forzenfox.github.io/articles/2022/03/13/1647154745757.html</guid>
-      <category>sql</category>
       <category>Mysql</category>
       <category>数据库</category>
+      <category>sql</category>
       <pubDate>Sun, 13 Mar 2022 14:59:37 +0800</pubDate>
     </item>
     <item>
@@ -57,9 +79,9 @@
       <description/>
       <author>forzenfox</author>
       <guid>https://forzenfox.github.io/articles/2022/03/13/1647154631868.html</guid>
-      <category>java</category>
       <category>多线程</category>
       <category>学习笔记</category>
+      <category>java</category>
       <pubDate>Sun, 13 Mar 2022 14:57:11 +0800</pubDate>
     </item>
     <item>
@@ -68,10 +90,10 @@
       <description/>
       <author>forzenfox</author>
       <guid>https://forzenfox.github.io/articles/2021/11/05/1636107625790.html</guid>
+      <category>sql</category>
+      <category>数据库</category>
       <category>Mysql</category>
       <category>学习笔记</category>
-      <category>数据库</category>
-      <category>sql</category>
       <pubDate>Sun, 13 Mar 2022 14:48:33 +0800</pubDate>
     </item>
     <item>
@@ -80,9 +102,9 @@
       <description/>
       <author>forzenfox</author>
       <guid>https://forzenfox.github.io/articles/2021/11/17/1637115554239.html</guid>
-      <category>screw</category>
       <category>工具</category>
       <category>开源项目</category>
+      <category>screw</category>
       <pubDate>Sun, 13 Mar 2022 12:30:05 +0800</pubDate>
     </item>
     <item>
@@ -93,28 +115,6 @@
       <guid>https://forzenfox.github.io/articles/2021/11/18/1637220305162.html</guid>
       <category>java</category>
       <pubDate>Fri, 19 Nov 2021 12:32:06 +0800</pubDate>
-    </item>
-    <item>
-      <title>Flyway - 数据库版本控制工具</title>
-      <link>https://forzenfox.github.io/articles/2021/11/05/1636123283142.html</link>
-      <description/>
-      <author>forzenfox</author>
-      <guid>https://forzenfox.github.io/articles/2021/11/05/1636123283142.html</guid>
-      <category>数据库</category>
-      <category>flyway</category>
-      <category>工具</category>
-      <pubDate>Tue, 09 Nov 2021 17:30:47 +0800</pubDate>
-    </item>
-    <item>
-      <title>TDD简述</title>
-      <link>https://forzenfox.github.io/articles/2021/11/05/1636121282332.html</link>
-      <description/>
-      <author>forzenfox</author>
-      <guid>https://forzenfox.github.io/articles/2021/11/05/1636121282332.html</guid>
-      <category>TDD</category>
-      <category>单元测试</category>
-      <category>java</category>
-      <pubDate>Fri, 05 Nov 2021 22:08:10 +0800</pubDate>
     </item>
   </channel>
 </rss>
