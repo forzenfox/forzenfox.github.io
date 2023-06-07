@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Spring Framework 学习笔记 - Spring 应用上下文生命周期 - 佛系码农</title><meta name="description" content="悄悄咪咪写bug的佛系码农"/><meta property="og:description" content="悄悄咪咪写bug的佛系码农"/>    <meta name="keywords" content="Solo,Java,博客,开源"/><link rel="dns-prefetch" href="https://forzenfox.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://forzenfox.github.io"><link rel="icon" type="image/png" href="https://b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Spring Framework 学习笔记 - Spring 应用上下文生命周期 - 佛系码农"/><meta property="og:site_name" content="佛系码农"/><meta property="og:url"      content="https://forzenfox.github.io/articles/2022/04/02/1648886248605.html?"/><meta property="og:image" content="https://b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="Spring Framework 学习笔记 - Spring 应用上下文生命周期 - 佛系码农" href="/opensearch.xml"><link href="https://forzenfox.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://forzenfox.github.io/manifest.json">        <link rel="canonical" href="https://forzenfox.github.io/articles/2022/04/02/1648886248605.html">        <link rel="stylesheet"
-              href="https://forzenfox.github.io/skins/Bubble/css/base.css?1682844075131"/>
+              href="https://forzenfox.github.io/skins/Bubble/css/base.css?1685018572608"/>
             <link rel="prev" title="SQL - 事务" href="https://forzenfox.github.io/articles/2022/03/13/1647154841949.html">
             <link rel="next" title="Java 8 - CompletableFuture" href="https://forzenfox.github.io/articles/2022/04/26/1650947125974.html">
     <script src="https://cdn.jsdelivr.net/npm/vditor@3.8.4/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
@@ -44,7 +44,7 @@
                 <a href="https://forzenfox.github.io" rel="start"><img class="side__logo" alt="佛系码农" src="https://b3logfile.com/avatar/1636036720949_1636122082221.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100"></a>
 
                 <div class="side__meta">
-                    14 文章 <br>
+                    55 文章 <br>
                     <span data-uvstaturl="https://forzenfox.github.io">0</span> 浏览
                     
                 </div>
@@ -77,15 +77,15 @@
             </ul>
         </div>
     </div>
-    <div class="article__top" style="background-image: url(https://b3logfile.com/bing/20201128.jpg?imageView2/1/w/1280/h/720/interlace/1/q/100)">
-        <div style="background-image: url(https://b3logfile.com/bing/20201128.jpg?imageView2/1/w/1280/h/720/interlace/1/q/100)"></div>
+    <div class="article__top" style="background-image: url(https://b3logfile.com/bing/20200521.jpg?imageView2/1/w/960/h/540/interlace/1/q/100)">
+        <div style="background-image: url(https://b3logfile.com/bing/20200521.jpg?imageView2/1/w/960/h/540/interlace/1/q/100)"></div>
         <canvas id="articleTop"></canvas>
     </div>
     <div class="article">
         <div class="ft__center">
             <div class="article__meta">
                 <time>
-                    2022-04-02
+                    2023-06-05
                 </time>
                 /
                     <a rel="tag"
@@ -130,412 +130,457 @@
 </div>        </div>
         <div class="wrapper">
             <section class="vditor-reset articles article__content">
-                <h3 id="Spring-应用上下文启动准备阶段"><strong>Spring 应用上下文启动准备阶段</strong></h3>
-<p><strong><strong>AbstractApplicationContext#prepareRefresh() 方法</strong></strong></p>
-<ul>
-<li><strong>启动时间 - startupDate</strong></li>
-<li>**状态标识 - closed(false)、active(true) **</li>
-<li><strong>初始化 PropertySources - initPropertySources()</strong>
-<blockquote>
-<p><strong>默认实现为空：org.springframework.context.support.AbstractApplicationContext#initPropertySources</strong></p>
-</blockquote>
-</li>
-<li><strong>检验 Environment 中必须属性</strong>
-<blockquote>
-<p><strong>ConfigurablePropertyResolver#setRequiredProperties</strong></p>
-</blockquote>
-</li>
-<li><strong>初始化事件监听器集合</strong></li>
-<li><strong>初始化早期 Spring 事件集合</strong></li>
-</ul>
-<h3 id="BeanFactory-创建阶段"><strong>BeanFactory 创建阶段</strong></h3>
-<h4 id="AbstractApplicationContext-obtainFreshBeanFactory---方法"><strong>AbstractApplicationContext#obtainFreshBeanFactory() 方法</strong></h4>
+                <p><img src="https://b3logfile.com/bing/20200521.jpg?imageView2/1/w/960/h/540/interlace/1/q/100" alt=""></p>
+<h3 id="Spring-应用上下文启动准备阶段">Spring 应用上下文启动准备阶段</h3>
+<p><strong>AbstractApplicationContext#prepareRefresh() 方法</strong></p>
 <ul>
 <li>
-<p><strong>刷新 Spring 应用上下文底层 BeanFactory</strong></p>
+<p>启动时间 - startupDate</p>
+</li>
+<li>
+<p>状态标识 - closed(false)、active(true)</p>
+</li>
+<li>
+<p>初始化 PropertySources - initPropertySources()</p>
 <blockquote>
-<p><strong>org.springframework.context.support.AbstractApplicationContext#refreshBeanFactory</strong></p>
-</blockquote>
-<ul>
-<li><strong>销毁或关闭 BeanFactory，如果已存在的话</strong></li>
-<li><strong>创建 BeanFactory - createBeanFactory()</strong></li>
-<li><strong>设置 BeanFactory Id</strong>
-<blockquote>
-<p><strong>默认用 ApplicationContext 的 Id 去填充</strong></p>
+<p>默认实现为空：org.springframework.context.support.AbstractApplicationContext#initPropertySources</p>
 </blockquote>
 </li>
-<li><strong>设置“是否允许 BeanDefinition 重复定义” ，默认为 “true”</strong>
+<li>
+<p>检验 Environment 中必须属性</p>
 <blockquote>
-<p><strong>customizeBeanFactory(DefaultListableBeanFactory)</strong></p>
+<p>ConfigurablePropertyResolver#setRequiredProperties</p>
 </blockquote>
 </li>
-<li><strong>设置“是否允许循环引用（依赖）” ，默认为 “true”</strong>
-<blockquote>
-<p><strong>customizeBeanFactory(DefaultListableBeanFactory)</strong></p>
-</blockquote>
+<li>
+<p>初始化事件监听器集合</p>
 </li>
-<li><strong>加载 BeanDefinition - loadBeanDefinitions(DefaultListableBeanFactory) 方法</strong>
-<blockquote>
-<p><strong>有不同的实现，比如 xml 和 注解 的不同实现，扫描加载 Bean 元信息：BeanDefinition</strong></p>
-</blockquote>
-</li>
-<li><strong>关联新建 BeanFactory 到 Spring 应用上下文</strong>
-<blockquote>
-<p><strong>org.springframework.context.support.AbstractRefreshableApplicationContext#beanFactory</strong></p>
-</blockquote>
+<li>
+<p>初始化早期 Spring 事件集合</p>
 </li>
 </ul>
+<h3 id="BeanFactory-创建阶段">BeanFactory 创建阶段</h3>
+<h4 id="AbstractApplicationContext-obtainFreshBeanFactory---方法">AbstractApplicationContext#obtainFreshBeanFactory() 方法</h4>
+<ul>
+<li>
+<p>刷新 Spring 应用上下文底层 BeanFactory</p>
+<blockquote>
+<p>org.springframework.context.support.AbstractApplicationContext#refreshBeanFactory</p>
+</blockquote>
+<ul>
+<li>
+<p>销毁或关闭 BeanFactory，如果已存在的话</p>
 </li>
 <li>
-<p><strong>返回 Spring 应用上下文底层 BeanFactory</strong></p>
+<p>创建 BeanFactory - createBeanFactory()</p>
+</li>
+<li>
+<p>设置 BeanFactory Id</p>
 <blockquote>
-<p><strong>org.springframework.context.support.AbstractApplicationContext#getBeanFactory</strong></p>
+<p>默认用 ApplicationContext 的 Id 去填充</p>
+</blockquote>
+</li>
+<li>
+<p>设置“是否允许 BeanDefinition 重复定义” ，默认为 “true”</p>
+<blockquote>
+<p>customizeBeanFactory(DefaultListableBeanFactory)</p>
+</blockquote>
+</li>
+<li>
+<p>设置“是否允许循环引用（依赖）” ，默认为 “true”</p>
+<blockquote>
+<p>customizeBeanFactory(DefaultListableBeanFactory)</p>
+</blockquote>
+</li>
+<li>
+<p>加载 BeanDefinition - loadBeanDefinitions(DefaultListableBeanFactory) 方法</p>
+<blockquote>
+<p>有不同的实现，比如 xml 和 注解 的不同实现，扫描加载 Bean 元信息：BeanDefinition</p>
+</blockquote>
+</li>
+<li>
+<p>关联新建 BeanFactory 到 Spring 应用上下文</p>
+<blockquote>
+<p>org.springframework.context.support.AbstractRefreshableApplicationContext#beanFactory</p>
 </blockquote>
 </li>
 </ul>
-<h3 id="BeanFactory-准备阶段"><strong>BeanFactory 准备阶段</strong></h3>
-<h4 id="AbstractApplicationContext-prepareBeanFactory-ConfigurableListableBeanFactory-方法"><strong>AbstractApplicationContext#prepareBeanFactory(ConfigurableListableBeanFactory)方法</strong></h4>
+</li>
+<li>
+<p>返回 Spring 应用上下文底层 BeanFactory</p>
+<blockquote>
+<p>org.springframework.context.support.AbstractApplicationContext#getBeanFactory</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="BeanFactory-准备阶段">BeanFactory 准备阶段</h3>
+<h4 id="AbstractApplicationContext-prepareBeanFactory-ConfigurableListableBeanFactory-方法">AbstractApplicationContext#prepareBeanFactory(ConfigurableListableBeanFactory)方法</h4>
 <ul>
 <li>
-<p><strong>关联 ClassLoader</strong></p>
+<p>关联 ClassLoader</p>
 </li>
 <li>
-<p><strong>设置 Bean 表达式处理器</strong></p>
+<p>设置 Bean 表达式处理器</p>
 </li>
 <li>
-<p><strong>添加 PropertyEditorRegistrar 实现 - ResourceEditorRegistrar</strong></p>
+<p>添加 PropertyEditorRegistrar 实现 - ResourceEditorRegistrar</p>
 </li>
 <li>
-<p>**处理 Aware 回调接口 **</p>
+<p>处理 Aware 回调接口</p>
 <ol>
-<li><strong>添加 BeanPostProcessor 实现 - ApplicationContextAwareProcessor</strong></li>
-<li><strong>忽略 Aware 回调接口作为依赖注入接口</strong>
-<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-ln">1</span><span class="highlight-cl">beanFactory.ignoreDependencyInterface(EnvironmentAware.class);
-</span></span><span class="highlight-line"><span class="highlight-ln">2</span><span class="highlight-cl">beanFactory.ignoreDependencyInterface(EmbeddedValueResolverAware.class);
-</span></span><span class="highlight-line"><span class="highlight-ln">3</span><span class="highlight-cl">beanFactory.ignoreDependencyInterface(ResourceLoaderAware.class);
-</span></span><span class="highlight-line"><span class="highlight-ln">4</span><span class="highlight-cl">beanFactory.ignoreDependencyInterface(ApplicationEventPublisherAware.class);
-</span></span><span class="highlight-line"><span class="highlight-ln">5</span><span class="highlight-cl">beanFactory.ignoreDependencyInterface(MessageSourceAware.class);
-</span></span><span class="highlight-line"><span class="highlight-ln">6</span><span class="highlight-cl">beanFactory.ignoreDependencyInterface(ApplicationContextAware.class);
+<li>
+<p>添加 BeanPostProcessor 实现 - ApplicationContextAwareProcessor</p>
+</li>
+<li>
+<p>忽略 Aware 回调接口作为依赖注入接口</p>
+<pre><code class="language-java highlight-chroma"><span class="highlight-line"><span class="highlight-ln">1</span><span class="highlight-cl"><span class="highlight-n">beanFactory</span><span class="highlight-o">.</span><span class="highlight-na">ignoreDependencyInterface</span><span class="highlight-o">(</span><span class="highlight-n">EnvironmentAware</span><span class="highlight-o">.</span><span class="highlight-na">class</span><span class="highlight-o">);</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">2</span><span class="highlight-cl"><span class="highlight-n">beanFactory</span><span class="highlight-o">.</span><span class="highlight-na">ignoreDependencyInterface</span><span class="highlight-o">(</span><span class="highlight-n">EmbeddedValueResolverAware</span><span class="highlight-o">.</span><span class="highlight-na">class</span><span class="highlight-o">);</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">3</span><span class="highlight-cl"><span class="highlight-n">beanFactory</span><span class="highlight-o">.</span><span class="highlight-na">ignoreDependencyInterface</span><span class="highlight-o">(</span><span class="highlight-n">ResourceLoaderAware</span><span class="highlight-o">.</span><span class="highlight-na">class</span><span class="highlight-o">);</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">4</span><span class="highlight-cl"><span class="highlight-n">beanFactory</span><span class="highlight-o">.</span><span class="highlight-na">ignoreDependencyInterface</span><span class="highlight-o">(</span><span class="highlight-n">ApplicationEventPublisherAware</span><span class="highlight-o">.</span><span class="highlight-na">class</span><span class="highlight-o">);</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">5</span><span class="highlight-cl"><span class="highlight-n">beanFactory</span><span class="highlight-o">.</span><span class="highlight-na">ignoreDependencyInterface</span><span class="highlight-o">(</span><span class="highlight-n">MessageSourceAware</span><span class="highlight-o">.</span><span class="highlight-na">class</span><span class="highlight-o">);</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">6</span><span class="highlight-cl"><span class="highlight-n">beanFactory</span><span class="highlight-o">.</span><span class="highlight-na">ignoreDependencyInterface</span><span class="highlight-o">(</span><span class="highlight-n">ApplicationContextAware</span><span class="highlight-o">.</span><span class="highlight-na">class</span><span class="highlight-o">);</span>
 </span></span></code></pre>
 </li>
 </ol>
 </li>
 <li>
-<p><strong>注册 ResolvableDependency 对象 （Spring 内建依赖：只能依赖注入不能依赖查找）</strong></p>
-<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-ln">1</span><span class="highlight-cl">beanFactory.registerResolvableDependency(BeanFactory.class, beanFactory);
-</span></span><span class="highlight-line"><span class="highlight-ln">2</span><span class="highlight-cl">beanFactory.registerResolvableDependency(ResourceLoader.class, this);
-</span></span><span class="highlight-line"><span class="highlight-ln">3</span><span class="highlight-cl">beanFactory.registerResolvableDependency(ApplicationEventPublisher.class, this);
-</span></span><span class="highlight-line"><span class="highlight-ln">4</span><span class="highlight-cl">beanFactory.registerResolvableDependency(ApplicationContext.class, this);
+<p>注册 ResolvableDependency 对象 （Spring 内建依赖：只能依赖注入不能依赖查找）</p>
+<pre><code class="language-java highlight-chroma"><span class="highlight-line"><span class="highlight-ln">1</span><span class="highlight-cl"><span class="highlight-n">beanFactory</span><span class="highlight-o">.</span><span class="highlight-na">registerResolvableDependency</span><span class="highlight-o">(</span><span class="highlight-n">BeanFactory</span><span class="highlight-o">.</span><span class="highlight-na">class</span><span class="highlight-o">,</span> <span class="highlight-n">beanFactory</span><span class="highlight-o">);</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">2</span><span class="highlight-cl"><span class="highlight-n">beanFactory</span><span class="highlight-o">.</span><span class="highlight-na">registerResolvableDependency</span><span class="highlight-o">(</span><span class="highlight-n">ResourceLoader</span><span class="highlight-o">.</span><span class="highlight-na">class</span><span class="highlight-o">,</span> <span class="highlight-k">this</span><span class="highlight-o">);</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">3</span><span class="highlight-cl"><span class="highlight-n">beanFactory</span><span class="highlight-o">.</span><span class="highlight-na">registerResolvableDependency</span><span class="highlight-o">(</span><span class="highlight-n">ApplicationEventPublisher</span><span class="highlight-o">.</span><span class="highlight-na">class</span><span class="highlight-o">,</span> <span class="highlight-k">this</span><span class="highlight-o">);</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">4</span><span class="highlight-cl"><span class="highlight-n">beanFactory</span><span class="highlight-o">.</span><span class="highlight-na">registerResolvableDependency</span><span class="highlight-o">(</span><span class="highlight-n">ApplicationContext</span><span class="highlight-o">.</span><span class="highlight-na">class</span><span class="highlight-o">,</span> <span class="highlight-k">this</span><span class="highlight-o">);</span>
 </span></span></code></pre>
 </li>
 <li>
-<p><strong>注册 ApplicationListenerDetector 对象</strong></p>
+<p>注册 ApplicationListenerDetector 对象</p>
 <blockquote>
-<p><strong>ApplicationListenerDetector : ApplicationListener 探测器，通过组合的方式，实现了 <strong><code>DestructionAwareBeanPostProcessor</code></strong> 和 <strong><code>MergedBeanDefinitionPostProcessor</code></strong>。</strong></p>
+<p>ApplicationListenerDetector : ApplicationListener 探测器，通过组合的方式，实现了 <code>DestructionAwareBeanPostProcessor</code> 和 <code>MergedBeanDefinitionPostProcessor</code>。</p>
 <ul>
-<li><strong>实现 MergedBeanDefinitionPostProcessor#postProcessMergedBeanDefinition （合并 BeanDefinition 的后置处理）</strong><br>
-<strong>识别到 <strong><code>ApplicationListener.class</code></strong> 接口的实现类，并存储 beanName 和 是否是单例模式</strong>
-<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-ln">1</span><span class="highlight-cl">public void postProcessMergedBeanDefinition(RootBeanDefinition beanDefinition, Class&lt;?&gt; beanType, String beanName) {
-</span></span><span class="highlight-line"><span class="highlight-ln">2</span><span class="highlight-cl"> &nbsp; &nbsp;if (ApplicationListener.class.isAssignableFrom(beanType)) {
-</span></span><span class="highlight-line"><span class="highlight-ln">3</span><span class="highlight-cl"> &nbsp; &nbsp; &nbsp; &nbsp;this.singletonNames.put(beanName, beanDefinition.isSingleton());
-</span></span><span class="highlight-line"><span class="highlight-ln">4</span><span class="highlight-cl"> &nbsp;  }
-</span></span><span class="highlight-line"><span class="highlight-ln">5</span><span class="highlight-cl">}
+<li>
+<p>实现 MergedBeanDefinitionPostProcessor#postProcessMergedBeanDefinition （合并 BeanDefinition 的后置处理）</p>
+<p>识别到 <code>ApplicationListener.class</code> 接口的实现类，并存储 beanName 和 是否是单例模式</p>
+<pre><code class="language-java highlight-chroma"><span class="highlight-line"><span class="highlight-ln">1</span><span class="highlight-cl"><span class="highlight-kd">public</span> <span class="highlight-kt">void</span> <span class="highlight-nf">postProcessMergedBeanDefinition</span><span class="highlight-o">(</span><span class="highlight-n">RootBeanDefinition</span> <span class="highlight-n">beanDefinition</span><span class="highlight-o">,</span> <span class="highlight-n">Class</span><span class="highlight-o">&lt;?&gt;</span> <span class="highlight-n">beanType</span><span class="highlight-o">,</span> <span class="highlight-n">String</span> <span class="highlight-n">beanName</span><span class="highlight-o">)</span> <span class="highlight-o">{</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">2</span><span class="highlight-cl">    <span class="highlight-k">if</span> <span class="highlight-o">(</span><span class="highlight-n">ApplicationListener</span><span class="highlight-o">.</span><span class="highlight-na">class</span><span class="highlight-o">.</span><span class="highlight-na">isAssignableFrom</span><span class="highlight-o">(</span><span class="highlight-n">beanType</span><span class="highlight-o">))</span> <span class="highlight-o">{</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">3</span><span class="highlight-cl">        <span class="highlight-k">this</span><span class="highlight-o">.</span><span class="highlight-na">singletonNames</span><span class="highlight-o">.</span><span class="highlight-na">put</span><span class="highlight-o">(</span><span class="highlight-n">beanName</span><span class="highlight-o">,</span> <span class="highlight-n">beanDefinition</span><span class="highlight-o">.</span><span class="highlight-na">isSingleton</span><span class="highlight-o">());</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">4</span><span class="highlight-cl">    <span class="highlight-o">}</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">5</span><span class="highlight-cl"><span class="highlight-o">}</span>
 </span></span></code></pre>
 </li>
-<li><strong>实现 BeanPostProcessor#postProcessAfterInitialization （Bean 初始化的后置处理）</strong><br>
-<strong>将 单例模式 并且 实现了 <strong><code>ApplicationListener.class</code></strong> 接口的 Bean 注册为 事件监听器</strong>
-<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-ln"> 1</span><span class="highlight-cl">public Object postProcessAfterInitialization(Object bean, String beanName) {
-</span></span><span class="highlight-line"><span class="highlight-ln"> 2</span><span class="highlight-cl"> &nbsp; &nbsp;if (bean instanceof ApplicationListener) {
-</span></span><span class="highlight-line"><span class="highlight-ln"> 3</span><span class="highlight-cl"> &nbsp; &nbsp; &nbsp; &nbsp;// potentially not detected as a listener by getBeanNamesForType retrieval
-</span></span><span class="highlight-line"><span class="highlight-ln"> 4</span><span class="highlight-cl"> &nbsp; &nbsp; &nbsp; &nbsp;Boolean flag = this.singletonNames.get(beanName);
-</span></span><span class="highlight-line"><span class="highlight-ln"> 5</span><span class="highlight-cl"> &nbsp; &nbsp; &nbsp; &nbsp;if (Boolean.TRUE.equals(flag)) {
-</span></span><span class="highlight-line"><span class="highlight-ln"> 6</span><span class="highlight-cl"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;// singleton bean (top-level or inner): register on the fly
-</span></span><span class="highlight-line"><span class="highlight-ln"> 7</span><span class="highlight-cl"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;// 此时 可能 
-</span></span><span class="highlight-line"><span class="highlight-ln"> 8</span><span class="highlight-cl"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;this.applicationContext.addApplicationListener((ApplicationListener&lt;?&gt;) bean);
-</span></span><span class="highlight-line"><span class="highlight-ln"> 9</span><span class="highlight-cl"> &nbsp; &nbsp; &nbsp;  }
-</span></span><span class="highlight-line"><span class="highlight-ln">10</span><span class="highlight-cl"> &nbsp; &nbsp; &nbsp; &nbsp;else if (Boolean.FALSE.equals(flag)) {
-</span></span><span class="highlight-line"><span class="highlight-ln">11</span><span class="highlight-cl"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (logger.isWarnEnabled() &amp;&amp; !this.applicationContext.containsBean(beanName)) {
-</span></span><span class="highlight-line"><span class="highlight-ln">12</span><span class="highlight-cl"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;// inner bean with other scope - can't reliably process events
-</span></span><span class="highlight-line"><span class="highlight-ln">13</span><span class="highlight-cl"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;logger.warn("Inner bean '" + beanName + "' implements ApplicationListener interface " +
-</span></span><span class="highlight-line"><span class="highlight-ln">14</span><span class="highlight-cl"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;"but is not reachable for event multicasting by its containing ApplicationContext " +
-</span></span><span class="highlight-line"><span class="highlight-ln">15</span><span class="highlight-cl"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;"because it does not have singleton scope. Only top-level listener beans are allowed " +
-</span></span><span class="highlight-line"><span class="highlight-ln">16</span><span class="highlight-cl"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;"to be of non-singleton scope.");
-</span></span><span class="highlight-line"><span class="highlight-ln">17</span><span class="highlight-cl"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  }
-</span></span><span class="highlight-line"><span class="highlight-ln">18</span><span class="highlight-cl"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;this.singletonNames.remove(beanName);
-</span></span><span class="highlight-line"><span class="highlight-ln">19</span><span class="highlight-cl"> &nbsp; &nbsp; &nbsp;  }
-</span></span><span class="highlight-line"><span class="highlight-ln">20</span><span class="highlight-cl"> &nbsp;  }
-</span></span><span class="highlight-line"><span class="highlight-ln">21</span><span class="highlight-cl"> &nbsp; &nbsp;return bean;
-</span></span><span class="highlight-line"><span class="highlight-ln">22</span><span class="highlight-cl">}
+<li>
+<p>实现 BeanPostProcessor#postProcessAfterInitialization （Bean 初始化的后置处理）</p>
+<p>将 单例模式 并且 实现了 <code>ApplicationListener.class</code> 接口的 Bean 注册为 事件监听器</p>
+<pre><code class="language-java highlight-chroma"><span class="highlight-line"><span class="highlight-ln"> 1</span><span class="highlight-cl"><span class="highlight-kd">public</span> <span class="highlight-n">Object</span> <span class="highlight-nf">postProcessAfterInitialization</span><span class="highlight-o">(</span><span class="highlight-n">Object</span> <span class="highlight-n">bean</span><span class="highlight-o">,</span> <span class="highlight-n">String</span> <span class="highlight-n">beanName</span><span class="highlight-o">)</span> <span class="highlight-o">{</span>
+</span></span><span class="highlight-line"><span class="highlight-ln"> 2</span><span class="highlight-cl">    <span class="highlight-k">if</span> <span class="highlight-o">(</span><span class="highlight-n">bean</span> <span class="highlight-k">instanceof</span> <span class="highlight-n">ApplicationListener</span><span class="highlight-o">)</span> <span class="highlight-o">{</span>
+</span></span><span class="highlight-line"><span class="highlight-ln"> 3</span><span class="highlight-cl">        <span class="highlight-c1">// potentially not detected as a listener by getBeanNamesForType retrieval
+</span></span></span><span class="highlight-line"><span class="highlight-ln"> 4</span><span class="highlight-cl"><span class="highlight-c1"></span>        <span class="highlight-n">Boolean</span> <span class="highlight-n">flag</span> <span class="highlight-o">=</span> <span class="highlight-k">this</span><span class="highlight-o">.</span><span class="highlight-na">singletonNames</span><span class="highlight-o">.</span><span class="highlight-na">get</span><span class="highlight-o">(</span><span class="highlight-n">beanName</span><span class="highlight-o">);</span>
+</span></span><span class="highlight-line"><span class="highlight-ln"> 5</span><span class="highlight-cl">        <span class="highlight-k">if</span> <span class="highlight-o">(</span><span class="highlight-n">Boolean</span><span class="highlight-o">.</span><span class="highlight-na">TRUE</span><span class="highlight-o">.</span><span class="highlight-na">equals</span><span class="highlight-o">(</span><span class="highlight-n">flag</span><span class="highlight-o">))</span> <span class="highlight-o">{</span>
+</span></span><span class="highlight-line"><span class="highlight-ln"> 6</span><span class="highlight-cl">            <span class="highlight-c1">// singleton bean (top-level or inner): register on the fly
+</span></span></span><span class="highlight-line"><span class="highlight-ln"> 7</span><span class="highlight-cl"><span class="highlight-c1"></span>            <span class="highlight-c1">// 此时 可能 
+</span></span></span><span class="highlight-line"><span class="highlight-ln"> 8</span><span class="highlight-cl"><span class="highlight-c1"></span>            <span class="highlight-k">this</span><span class="highlight-o">.</span><span class="highlight-na">applicationContext</span><span class="highlight-o">.</span><span class="highlight-na">addApplicationListener</span><span class="highlight-o">((</span><span class="highlight-n">ApplicationListener</span><span class="highlight-o">&lt;?&gt;)</span> <span class="highlight-n">bean</span><span class="highlight-o">);</span>
+</span></span><span class="highlight-line"><span class="highlight-ln"> 9</span><span class="highlight-cl">        <span class="highlight-o">}</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">10</span><span class="highlight-cl">        <span class="highlight-k">else</span> <span class="highlight-k">if</span> <span class="highlight-o">(</span><span class="highlight-n">Boolean</span><span class="highlight-o">.</span><span class="highlight-na">FALSE</span><span class="highlight-o">.</span><span class="highlight-na">equals</span><span class="highlight-o">(</span><span class="highlight-n">flag</span><span class="highlight-o">))</span> <span class="highlight-o">{</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">11</span><span class="highlight-cl">            <span class="highlight-k">if</span> <span class="highlight-o">(</span><span class="highlight-n">logger</span><span class="highlight-o">.</span><span class="highlight-na">isWarnEnabled</span><span class="highlight-o">()</span> <span class="highlight-o">&amp;&amp;</span> <span class="highlight-o">!</span><span class="highlight-k">this</span><span class="highlight-o">.</span><span class="highlight-na">applicationContext</span><span class="highlight-o">.</span><span class="highlight-na">containsBean</span><span class="highlight-o">(</span><span class="highlight-n">beanName</span><span class="highlight-o">))</span> <span class="highlight-o">{</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">12</span><span class="highlight-cl">                <span class="highlight-c1">// inner bean with other scope - can't reliably process events
+</span></span></span><span class="highlight-line"><span class="highlight-ln">13</span><span class="highlight-cl"><span class="highlight-c1"></span>                <span class="highlight-n">logger</span><span class="highlight-o">.</span><span class="highlight-na">warn</span><span class="highlight-o">(</span><span class="highlight-s">"Inner bean '"</span> <span class="highlight-o">+</span> <span class="highlight-n">beanName</span> <span class="highlight-o">+</span> <span class="highlight-s">"' implements ApplicationListener interface "</span> <span class="highlight-o">+</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">14</span><span class="highlight-cl">                            <span class="highlight-s">"but is not reachable for event multicasting by its containing ApplicationContext "</span> <span class="highlight-o">+</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">15</span><span class="highlight-cl">                            <span class="highlight-s">"because it does not have singleton scope. Only top-level listener beans are allowed "</span> <span class="highlight-o">+</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">16</span><span class="highlight-cl">                            <span class="highlight-s">"to be of non-singleton scope."</span><span class="highlight-o">);</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">17</span><span class="highlight-cl">            <span class="highlight-o">}</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">18</span><span class="highlight-cl">            <span class="highlight-k">this</span><span class="highlight-o">.</span><span class="highlight-na">singletonNames</span><span class="highlight-o">.</span><span class="highlight-na">remove</span><span class="highlight-o">(</span><span class="highlight-n">beanName</span><span class="highlight-o">);</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">19</span><span class="highlight-cl">        <span class="highlight-o">}</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">20</span><span class="highlight-cl">    <span class="highlight-o">}</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">21</span><span class="highlight-cl">    <span class="highlight-k">return</span> <span class="highlight-n">bean</span><span class="highlight-o">;</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">22</span><span class="highlight-cl"><span class="highlight-o">}</span>
 </span></span></code></pre>
 </li>
-<li><strong>实现 DestructionAwareBeanPostProcessor#postProcessBeforeDestruction (Bean 销毁前置处理)</strong><br>
-<strong>事件监听器 Bean 销毁前， 从 <strong><code>ApplicationEventMulticaster</code></strong> 中移除事件监听器</strong>
-<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-ln"> 1</span><span class="highlight-cl">public void postProcessBeforeDestruction(Object bean, String beanName) {
-</span></span><span class="highlight-line"><span class="highlight-ln"> 2</span><span class="highlight-cl"> &nbsp; &nbsp;if (bean instanceof ApplicationListener) {
-</span></span><span class="highlight-line"><span class="highlight-ln"> 3</span><span class="highlight-cl"> &nbsp; &nbsp; &nbsp; &nbsp;try {
-</span></span><span class="highlight-line"><span class="highlight-ln"> 4</span><span class="highlight-cl"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ApplicationEventMulticaster multicaster = this.applicationContext.getApplicationEventMulticaster();
-</span></span><span class="highlight-line"><span class="highlight-ln"> 5</span><span class="highlight-cl"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;multicaster.removeApplicationListener((ApplicationListener&lt;?&gt;) bean);
-</span></span><span class="highlight-line"><span class="highlight-ln"> 6</span><span class="highlight-cl"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;multicaster.removeApplicationListenerBean(beanName);
-</span></span><span class="highlight-line"><span class="highlight-ln"> 7</span><span class="highlight-cl"> &nbsp; &nbsp; &nbsp;  }
-</span></span><span class="highlight-line"><span class="highlight-ln"> 8</span><span class="highlight-cl"> &nbsp; &nbsp; &nbsp; &nbsp;catch (IllegalStateException ex) {
-</span></span><span class="highlight-line"><span class="highlight-ln"> 9</span><span class="highlight-cl"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;// ApplicationEventMulticaster not initialized yet - no need to remove a listener
-</span></span><span class="highlight-line"><span class="highlight-ln">10</span><span class="highlight-cl"> &nbsp; &nbsp; &nbsp;  }
-</span></span><span class="highlight-line"><span class="highlight-ln">11</span><span class="highlight-cl"> &nbsp;  }
-</span></span><span class="highlight-line"><span class="highlight-ln">12</span><span class="highlight-cl">}
+<li>
+<p>实现 DestructionAwareBeanPostProcessor#postProcessBeforeDestruction (Bean 销毁前置处理)</p>
+<p>事件监听器 Bean 销毁前， 从 <code>ApplicationEventMulticaster</code> 中移除事件监听器</p>
+<pre><code class="language-java highlight-chroma"><span class="highlight-line"><span class="highlight-ln"> 1</span><span class="highlight-cl"><span class="highlight-kd">public</span> <span class="highlight-kt">void</span> <span class="highlight-nf">postProcessBeforeDestruction</span><span class="highlight-o">(</span><span class="highlight-n">Object</span> <span class="highlight-n">bean</span><span class="highlight-o">,</span> <span class="highlight-n">String</span> <span class="highlight-n">beanName</span><span class="highlight-o">)</span> <span class="highlight-o">{</span>
+</span></span><span class="highlight-line"><span class="highlight-ln"> 2</span><span class="highlight-cl">    <span class="highlight-k">if</span> <span class="highlight-o">(</span><span class="highlight-n">bean</span> <span class="highlight-k">instanceof</span> <span class="highlight-n">ApplicationListener</span><span class="highlight-o">)</span> <span class="highlight-o">{</span>
+</span></span><span class="highlight-line"><span class="highlight-ln"> 3</span><span class="highlight-cl">        <span class="highlight-k">try</span> <span class="highlight-o">{</span>
+</span></span><span class="highlight-line"><span class="highlight-ln"> 4</span><span class="highlight-cl">            <span class="highlight-n">ApplicationEventMulticaster</span> <span class="highlight-n">multicaster</span> <span class="highlight-o">=</span> <span class="highlight-k">this</span><span class="highlight-o">.</span><span class="highlight-na">applicationContext</span><span class="highlight-o">.</span><span class="highlight-na">getApplicationEventMulticaster</span><span class="highlight-o">();</span>
+</span></span><span class="highlight-line"><span class="highlight-ln"> 5</span><span class="highlight-cl">            <span class="highlight-n">multicaster</span><span class="highlight-o">.</span><span class="highlight-na">removeApplicationListener</span><span class="highlight-o">((</span><span class="highlight-n">ApplicationListener</span><span class="highlight-o">&lt;?&gt;)</span> <span class="highlight-n">bean</span><span class="highlight-o">);</span>
+</span></span><span class="highlight-line"><span class="highlight-ln"> 6</span><span class="highlight-cl">            <span class="highlight-n">multicaster</span><span class="highlight-o">.</span><span class="highlight-na">removeApplicationListenerBean</span><span class="highlight-o">(</span><span class="highlight-n">beanName</span><span class="highlight-o">);</span>
+</span></span><span class="highlight-line"><span class="highlight-ln"> 7</span><span class="highlight-cl">        <span class="highlight-o">}</span>
+</span></span><span class="highlight-line"><span class="highlight-ln"> 8</span><span class="highlight-cl">        <span class="highlight-k">catch</span> <span class="highlight-o">(</span><span class="highlight-n">IllegalStateException</span> <span class="highlight-n">ex</span><span class="highlight-o">)</span> <span class="highlight-o">{</span>
+</span></span><span class="highlight-line"><span class="highlight-ln"> 9</span><span class="highlight-cl">            <span class="highlight-c1">// ApplicationEventMulticaster not initialized yet - no need to remove a listener
+</span></span></span><span class="highlight-line"><span class="highlight-ln">10</span><span class="highlight-cl"><span class="highlight-c1"></span>        <span class="highlight-o">}</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">11</span><span class="highlight-cl">    <span class="highlight-o">}</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">12</span><span class="highlight-cl"><span class="highlight-o">}</span>
 </span></span></code></pre>
 </li>
 </ul>
 </blockquote>
 </li>
 <li>
-<p><strong>注册 LoadTimeWeaverAwareProcessor 对象</strong></p>
+<p>注册 LoadTimeWeaverAwareProcessor 对象</p>
 </li>
 <li>
-<p><strong>注册默认的环境变量相关的 Beans （单例对象）</strong></p>
+<p>注册默认的环境变量相关的 Beans （单例对象）</p>
 <ul>
-<li><strong>Environment</strong></li>
-<li><strong>Java System Properties</strong></li>
-<li><strong>OS 环境变量</strong></li>
+<li>Environment</li>
+<li>Java System Properties</li>
+<li>OS 环境变量</li>
 </ul>
-<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-ln"> 1</span><span class="highlight-cl">// Register default environment beans.
-</span></span><span class="highlight-line"><span class="highlight-ln"> 2</span><span class="highlight-cl">if (!beanFactory.containsLocalBean(ENVIRONMENT_BEAN_NAME)) {
-</span></span><span class="highlight-line"><span class="highlight-ln"> 3</span><span class="highlight-cl"> &nbsp; &nbsp;beanFactory.registerSingleton(ENVIRONMENT_BEAN_NAME, getEnvironment());
-</span></span><span class="highlight-line"><span class="highlight-ln"> 4</span><span class="highlight-cl">}
-</span></span><span class="highlight-line"><span class="highlight-ln"> 5</span><span class="highlight-cl">if (!beanFactory.containsLocalBean(SYSTEM_PROPERTIES_BEAN_NAME)) {
-</span></span><span class="highlight-line"><span class="highlight-ln"> 6</span><span class="highlight-cl"> &nbsp; &nbsp;beanFactory.registerSingleton(SYSTEM_PROPERTIES_BEAN_NAME, getEnvironment().getSystemProperties());
-</span></span><span class="highlight-line"><span class="highlight-ln"> 7</span><span class="highlight-cl">}
-</span></span><span class="highlight-line"><span class="highlight-ln"> 8</span><span class="highlight-cl">if (!beanFactory.containsLocalBean(SYSTEM_ENVIRONMENT_BEAN_NAME)) {
-</span></span><span class="highlight-line"><span class="highlight-ln"> 9</span><span class="highlight-cl"> &nbsp; &nbsp;beanFactory.registerSingleton(SYSTEM_ENVIRONMENT_BEAN_NAME, getEnvironment().getSystemEnvironment());
-</span></span><span class="highlight-line"><span class="highlight-ln">10</span><span class="highlight-cl">}
+<pre><code class="language-java highlight-chroma"><span class="highlight-line"><span class="highlight-ln"> 1</span><span class="highlight-cl"><span class="highlight-c1">// Register default environment beans.
+</span></span></span><span class="highlight-line"><span class="highlight-ln"> 2</span><span class="highlight-cl"><span class="highlight-c1"></span><span class="highlight-k">if</span> <span class="highlight-o">(!</span><span class="highlight-n">beanFactory</span><span class="highlight-o">.</span><span class="highlight-na">containsLocalBean</span><span class="highlight-o">(</span><span class="highlight-n">ENVIRONMENT_BEAN_NAME</span><span class="highlight-o">))</span> <span class="highlight-o">{</span>
+</span></span><span class="highlight-line"><span class="highlight-ln"> 3</span><span class="highlight-cl">    <span class="highlight-n">beanFactory</span><span class="highlight-o">.</span><span class="highlight-na">registerSingleton</span><span class="highlight-o">(</span><span class="highlight-n">ENVIRONMENT_BEAN_NAME</span><span class="highlight-o">,</span> <span class="highlight-n">getEnvironment</span><span class="highlight-o">());</span>
+</span></span><span class="highlight-line"><span class="highlight-ln"> 4</span><span class="highlight-cl"><span class="highlight-o">}</span>
+</span></span><span class="highlight-line"><span class="highlight-ln"> 5</span><span class="highlight-cl"><span class="highlight-k">if</span> <span class="highlight-o">(!</span><span class="highlight-n">beanFactory</span><span class="highlight-o">.</span><span class="highlight-na">containsLocalBean</span><span class="highlight-o">(</span><span class="highlight-n">SYSTEM_PROPERTIES_BEAN_NAME</span><span class="highlight-o">))</span> <span class="highlight-o">{</span>
+</span></span><span class="highlight-line"><span class="highlight-ln"> 6</span><span class="highlight-cl">    <span class="highlight-n">beanFactory</span><span class="highlight-o">.</span><span class="highlight-na">registerSingleton</span><span class="highlight-o">(</span><span class="highlight-n">SYSTEM_PROPERTIES_BEAN_NAME</span><span class="highlight-o">,</span> <span class="highlight-n">getEnvironment</span><span class="highlight-o">().</span><span class="highlight-na">getSystemProperties</span><span class="highlight-o">());</span>
+</span></span><span class="highlight-line"><span class="highlight-ln"> 7</span><span class="highlight-cl"><span class="highlight-o">}</span>
+</span></span><span class="highlight-line"><span class="highlight-ln"> 8</span><span class="highlight-cl"><span class="highlight-k">if</span> <span class="highlight-o">(!</span><span class="highlight-n">beanFactory</span><span class="highlight-o">.</span><span class="highlight-na">containsLocalBean</span><span class="highlight-o">(</span><span class="highlight-n">SYSTEM_ENVIRONMENT_BEAN_NAME</span><span class="highlight-o">))</span> <span class="highlight-o">{</span>
+</span></span><span class="highlight-line"><span class="highlight-ln"> 9</span><span class="highlight-cl">    <span class="highlight-n">beanFactory</span><span class="highlight-o">.</span><span class="highlight-na">registerSingleton</span><span class="highlight-o">(</span><span class="highlight-n">SYSTEM_ENVIRONMENT_BEAN_NAME</span><span class="highlight-o">,</span> <span class="highlight-n">getEnvironment</span><span class="highlight-o">().</span><span class="highlight-na">getSystemEnvironment</span><span class="highlight-o">());</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">10</span><span class="highlight-cl"><span class="highlight-o">}</span>
 </span></span></code></pre>
 </li>
 </ul>
-<h3 id="BeanFactory-后置处理阶段"><strong>BeanFactory 后置处理阶段</strong></h3>
-<h4 id="AbstractApplicationContext-postProcessBeanFactory-ConfigurableListableBeanFactory-方法"><strong>AbstractApplicationContext#postProcessBeanFactory(ConfigurableListableBeanFactory)方法</strong></h4>
+<h3 id="BeanFactory-后置处理阶段">BeanFactory 后置处理阶段</h3>
+<h4 id="AbstractApplicationContext-postProcessBeanFactory-ConfigurableListableBeanFactory-方法">AbstractApplicationContext#postProcessBeanFactory(ConfigurableListableBeanFactory)方法</h4>
 <blockquote>
-<p><strong>默认实现为空，允许子类去覆盖实现</strong></p>
-<p><strong>eg：</strong></p>
+<p>默认实现为空，允许子类去覆盖实现</p>
+<p>eg：</p>
 <ul>
-<li><strong>AbstractRefreshableWebApplicationContext#postProcessBeanFactory 的实现中会添加 ServletContext 相关内容</strong></li>
+<li>AbstractRefreshableWebApplicationContext#postProcessBeanFactory 的实现中会添加 ServletContext 相关内容</li>
 </ul>
 </blockquote>
-<h4 id="AbstractApplicationContext-invokeBeanFactoryPostProcessors-ConfigurableListableBeanFactory-方法"><strong>AbstractApplicationContext#invokeBeanFactoryPostProcessors(ConfigurableListableBeanFactory 方法</strong></h4>
+<h4 id="AbstractApplicationContext-invokeBeanFactoryPostProcessors-ConfigurableListableBeanFactory-方法">AbstractApplicationContext#invokeBeanFactoryPostProcessors(ConfigurableListableBeanFactory 方法</h4>
 <ul>
 <li>
-<p><strong>调用 BeanFactoryPostProcessor 或 BeanDefinitionRegistry 后置处理方法</strong></p>
+<p>调用 BeanFactoryPostProcessor 或 BeanDefinitionRegistry 后置处理方法</p>
 <blockquote>
 <ol>
-<li><strong>如果当前 Spring 应用上下文是 BeanDefinitionRegistry 类型，则执行当前 Spring 应用上下文中所有 BeanDefinitionRegistryPostProcessor、BeanFactoryPostProcessor 的处理，以及底层 BeanFactory 容器中 BeanDefinitionRegistryPostProcessor 的处理，处理顺序如下：</strong>
+<li>如果当前 Spring 应用上下文是 BeanDefinitionRegistry 类型，则执行当前 Spring 应用上下文中所有 BeanDefinitionRegistryPostProcessor、BeanFactoryPostProcessor 的处理，以及底层 BeanFactory 容器中 BeanDefinitionRegistryPostProcessor 的处理，处理顺序如下：
 <ul>
-<li><strong>当前 Spring 应用上下文中所有 BeanDefinitionRegistryPostProcessor#postProcessBeanDefinitionRegistry</strong></li>
-<li><strong>底层 BeanFactory 容器中所有 BeanDefinitionRegistryPostProcessor#postProcessBeanDefinitionRegistry（优先级：PriorityOrdered &gt; Ordered &gt; 无）</strong></li>
-<li><strong>当前 Spring 应用上下文和底层 BeanFactory 容器中所有 BeanDefinitionRegistryPostProcessor#postProcessBeanFactory</strong></li>
-<li><strong>当前 Spring 应用上下文中所有 BeanFactoryPostProcessor#postProcessBeanFactory</strong></li>
+<li>当前 Spring 应用上下文中所有 BeanDefinitionRegistryPostProcessor#postProcessBeanDefinitionRegistry</li>
+<li>底层 BeanFactory 容器中所有 BeanDefinitionRegistryPostProcessor#postProcessBeanDefinitionRegistry（优先级：PriorityOrdered &gt; Ordered &gt; 无）</li>
+<li>当前 Spring 应用上下文和底层 BeanFactory 容器中所有 BeanDefinitionRegistryPostProcessor#postProcessBeanFactory</li>
+<li>当前 Spring 应用上下文中所有 BeanFactoryPostProcessor#postProcessBeanFactory</li>
 </ul>
 </li>
-<li><strong>否则，执行当前 Spring 应用上下文中所有 BeanFactoryPostProcessor#postProcessBeanFactory</strong></li>
-<li><strong>执行底层 BeanFactory 容器中所有 BeanFactoryPostProcessor#postProcessBeanFactory，上面已经处理过的会跳过，执行顺序和上面一样：PriorityOrdered &gt; Ordered &gt; 无</strong></li>
+<li>否则，执行当前 Spring 应用上下文中所有 BeanFactoryPostProcessor#postProcessBeanFactory</li>
+<li>执行底层 BeanFactory 容器中所有 BeanFactoryPostProcessor#postProcessBeanFactory，上面已经处理过的会跳过，执行顺序和上面一样：PriorityOrdered &gt; Ordered &gt; 无</li>
 </ol>
 </blockquote>
 </li>
 <li>
-<p><strong>注册 LoadTimeWeaverAwareProcessor 对象</strong></p>
+<p>注册 LoadTimeWeaverAwareProcessor 对象</p>
 </li>
 </ul>
-<h3 id="BeanFactory-注册BeanPostProcessor阶段"><strong>BeanFactory 注册 BeanPostProcessor 阶段</strong></h3>
-<p><strong><strong>关键方法：AbstractBeanFactory#addBeanPostProcessor</strong></strong></p>
-<p><strong>如果 <strong><code>beanPostProcessor</code></strong> 之前添加过，那么会先移除，然后再添加到末尾。</strong></p>
-<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-ln"> 1</span><span class="highlight-cl">public void addBeanPostProcessor(BeanPostProcessor beanPostProcessor) {
-</span></span><span class="highlight-line"><span class="highlight-ln"> 2</span><span class="highlight-cl"> &nbsp; &nbsp;Assert.notNull(beanPostProcessor, "BeanPostProcessor must not be null");
-</span></span><span class="highlight-line"><span class="highlight-ln"> 3</span><span class="highlight-cl"> &nbsp; &nbsp;// Remove from old position, if any
-</span></span><span class="highlight-line"><span class="highlight-ln"> 4</span><span class="highlight-cl"> &nbsp; &nbsp;this.beanPostProcessors.remove(beanPostProcessor);
-</span></span><span class="highlight-line"><span class="highlight-ln"> 5</span><span class="highlight-cl"> &nbsp; &nbsp;// Track whether it is instantiation/destruction aware
-</span></span><span class="highlight-line"><span class="highlight-ln"> 6</span><span class="highlight-cl"> &nbsp; &nbsp;if (beanPostProcessor instanceof InstantiationAwareBeanPostProcessor) {
-</span></span><span class="highlight-line"><span class="highlight-ln"> 7</span><span class="highlight-cl"> &nbsp; &nbsp; &nbsp; &nbsp;this.hasInstantiationAwareBeanPostProcessors = true;
-</span></span><span class="highlight-line"><span class="highlight-ln"> 8</span><span class="highlight-cl"> &nbsp;  }
-</span></span><span class="highlight-line"><span class="highlight-ln"> 9</span><span class="highlight-cl"> &nbsp; &nbsp;if (beanPostProcessor instanceof DestructionAwareBeanPostProcessor) {
-</span></span><span class="highlight-line"><span class="highlight-ln">10</span><span class="highlight-cl"> &nbsp; &nbsp; &nbsp; &nbsp;this.hasDestructionAwareBeanPostProcessors = true;
-</span></span><span class="highlight-line"><span class="highlight-ln">11</span><span class="highlight-cl"> &nbsp;  }
-</span></span><span class="highlight-line"><span class="highlight-ln">12</span><span class="highlight-cl"> &nbsp; &nbsp;// Add to end of list
-</span></span><span class="highlight-line"><span class="highlight-ln">13</span><span class="highlight-cl"> &nbsp; &nbsp;this.beanPostProcessors.add(beanPostProcessor);
-</span></span><span class="highlight-line"><span class="highlight-ln">14</span><span class="highlight-cl">}
+<h3 id="BeanFactory-注册BeanPostProcessor阶段">BeanFactory 注册 BeanPostProcessor 阶段</h3>
+<p><strong>关键方法：AbstractBeanFactory#addBeanPostProcessor</strong></p>
+<p>如果 <code>beanPostProcessor</code> 之前添加过，那么会先移除，然后再添加到末尾。</p>
+<pre><code class="language-java highlight-chroma"><span class="highlight-line"><span class="highlight-ln"> 1</span><span class="highlight-cl"><span class="highlight-kd">public</span> <span class="highlight-kt">void</span> <span class="highlight-nf">addBeanPostProcessor</span><span class="highlight-o">(</span><span class="highlight-n">BeanPostProcessor</span> <span class="highlight-n">beanPostProcessor</span><span class="highlight-o">)</span> <span class="highlight-o">{</span>
+</span></span><span class="highlight-line"><span class="highlight-ln"> 2</span><span class="highlight-cl">    <span class="highlight-n">Assert</span><span class="highlight-o">.</span><span class="highlight-na">notNull</span><span class="highlight-o">(</span><span class="highlight-n">beanPostProcessor</span><span class="highlight-o">,</span> <span class="highlight-s">"BeanPostProcessor must not be null"</span><span class="highlight-o">);</span>
+</span></span><span class="highlight-line"><span class="highlight-ln"> 3</span><span class="highlight-cl">    <span class="highlight-c1">// Remove from old position, if any
+</span></span></span><span class="highlight-line"><span class="highlight-ln"> 4</span><span class="highlight-cl"><span class="highlight-c1"></span>    <span class="highlight-k">this</span><span class="highlight-o">.</span><span class="highlight-na">beanPostProcessors</span><span class="highlight-o">.</span><span class="highlight-na">remove</span><span class="highlight-o">(</span><span class="highlight-n">beanPostProcessor</span><span class="highlight-o">);</span>
+</span></span><span class="highlight-line"><span class="highlight-ln"> 5</span><span class="highlight-cl">    <span class="highlight-c1">// Track whether it is instantiation/destruction aware
+</span></span></span><span class="highlight-line"><span class="highlight-ln"> 6</span><span class="highlight-cl"><span class="highlight-c1"></span>    <span class="highlight-k">if</span> <span class="highlight-o">(</span><span class="highlight-n">beanPostProcessor</span> <span class="highlight-k">instanceof</span> <span class="highlight-n">InstantiationAwareBeanPostProcessor</span><span class="highlight-o">)</span> <span class="highlight-o">{</span>
+</span></span><span class="highlight-line"><span class="highlight-ln"> 7</span><span class="highlight-cl">        <span class="highlight-k">this</span><span class="highlight-o">.</span><span class="highlight-na">hasInstantiationAwareBeanPostProcessors</span> <span class="highlight-o">=</span> <span class="highlight-kc">true</span><span class="highlight-o">;</span>
+</span></span><span class="highlight-line"><span class="highlight-ln"> 8</span><span class="highlight-cl">    <span class="highlight-o">}</span>
+</span></span><span class="highlight-line"><span class="highlight-ln"> 9</span><span class="highlight-cl">    <span class="highlight-k">if</span> <span class="highlight-o">(</span><span class="highlight-n">beanPostProcessor</span> <span class="highlight-k">instanceof</span> <span class="highlight-n">DestructionAwareBeanPostProcessor</span><span class="highlight-o">)</span> <span class="highlight-o">{</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">10</span><span class="highlight-cl">        <span class="highlight-k">this</span><span class="highlight-o">.</span><span class="highlight-na">hasDestructionAwareBeanPostProcessors</span> <span class="highlight-o">=</span> <span class="highlight-kc">true</span><span class="highlight-o">;</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">11</span><span class="highlight-cl">    <span class="highlight-o">}</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">12</span><span class="highlight-cl">    <span class="highlight-c1">// Add to end of list
+</span></span></span><span class="highlight-line"><span class="highlight-ln">13</span><span class="highlight-cl"><span class="highlight-c1"></span>    <span class="highlight-k">this</span><span class="highlight-o">.</span><span class="highlight-na">beanPostProcessors</span><span class="highlight-o">.</span><span class="highlight-na">add</span><span class="highlight-o">(</span><span class="highlight-n">beanPostProcessor</span><span class="highlight-o">);</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">14</span><span class="highlight-cl"><span class="highlight-o">}</span>
 </span></span></code></pre>
 <ul>
-<li><strong>注册 PriorityOrdered 类型的 BeanPostProcessor Beans</strong></li>
-<li><strong>注册 Ordered 类型的 BeanPostProcessor Beans</strong></li>
-<li><strong>注册普通 BeanPostProcessor Beans</strong></li>
-<li><strong>注册 MergedBeanDefinitionPostProcessor Beans</strong></li>
-<li><strong>注册 ApplicationListenerDetector 对象</strong></li>
+<li>注册 PriorityOrdered 类型的 BeanPostProcessor Beans</li>
+<li>注册 Ordered 类型的 BeanPostProcessor Beans</li>
+<li>注册普通 BeanPostProcessor Beans</li>
+<li>注册 MergedBeanDefinitionPostProcessor Beans</li>
+<li>注册 ApplicationListenerDetector 对象</li>
 </ul>
-<p><strong><strong>所以 BeanPostProcessor Beans 最后整体上的执行顺序：</strong></strong></p>
+<p><strong>所以 BeanPostProcessor Beans 最后整体上的执行顺序：</strong></p>
 <blockquote>
-<p><strong>实现了 PriorityOrdered 和 BeanPostProcessor 的 Bean</strong></p>
-<p><strong>-&gt; 实现了 Ordered 和 BeanPostProcessor 的 Bean</strong></p>
-<p><strong>-&gt; 只实现了 BeanPostProcessor 的 Bean</strong></p>
-<p><strong>-&gt; 实现了 PriorityOrdered 、MergedBeanDefinitionPostProcessor 和 BeanPostProcessor 的 Bean</strong></p>
-<p><strong>-&gt; 实现了 Ordered 、MergedBeanDefinitionPostProcessor 和 BeanPostProcessor 的 Bean</strong></p>
-<p><strong>-&gt; 实现了 MergedBeanDefinitionPostProcessor 和 BeanPostProcessor 的 Bean</strong></p>
-<p><strong>-&gt; ApplicationListenerDetector 对象</strong></p>
+<p>实现了 PriorityOrdered 和 BeanPostProcessor 的 Bean</p>
+<p>-&gt; 实现了 Ordered 和 BeanPostProcessor 的 Bean</p>
+<p>-&gt; 只实现了 BeanPostProcessor 的 Bean</p>
+<p>-&gt; 实现了 PriorityOrdered 、MergedBeanDefinitionPostProcessor 和 BeanPostProcessor 的 Bean</p>
+<p>-&gt; 实现了 Ordered 、MergedBeanDefinitionPostProcessor 和 BeanPostProcessor 的 Bean</p>
+<p>-&gt; 实现了 MergedBeanDefinitionPostProcessor 和 BeanPostProcessor 的 Bean</p>
+<p>-&gt; ApplicationListenerDetector 对象</p>
 </blockquote>
-<h3 id="初始化內建Bean-MessageSource"><strong>初始化內建 Bean：MessageSource</strong></h3>
-<h4 id="AbstractApplicationContext-initMessageSource---方法"><strong>AbstractApplicationContext#initMessageSource() 方法</strong></h4>
-<h3 id="初始化內建Bean-Spring-事件广播器"><strong>初始化內建 Bean：Spring 事件广播器</strong></h3>
-<h4 id="AbstractApplicationContext-initApplicationEventMulticaster---方法"><strong>AbstractApplicationContext#initApplicationEventMulticaster() 方法</strong></h4>
-<h3 id="Spring-应用上下文刷新阶段"><strong>Spring 应用上下文刷新阶段</strong></h3>
-<h4 id="AbstractApplicationContext-onRefresh---方法"><strong>AbstractApplicationContext#onRefresh() 方法</strong></h4>
-<p><strong>默认为空实现，允许子类覆盖实现</strong></p>
+<h3 id="初始化內建Bean-MessageSource">初始化內建 Bean：MessageSource</h3>
+<h4 id="AbstractApplicationContext-initMessageSource---方法">AbstractApplicationContext#initMessageSource() 方法</h4>
+<h3 id="初始化內建Bean-Spring-事件广播器">初始化內建 Bean：Spring 事件广播器</h3>
+<h4 id="AbstractApplicationContext-initApplicationEventMulticaster---方法">AbstractApplicationContext#initApplicationEventMulticaster() 方法</h4>
+<h3 id="Spring-应用上下文刷新阶段">Spring 应用上下文刷新阶段</h3>
+<h4 id="AbstractApplicationContext-onRefresh---方法">AbstractApplicationContext#onRefresh() 方法</h4>
+<p>默认为空实现，允许子类覆盖实现</p>
 <ul>
-<li><strong>org.springframework.web.context.support.AbstractRefreshableWebApplicationContext#onRefresh()</strong></li>
-<li><strong>org.springframework.web.context.support.GenericWebApplicationContext#onRefresh()</strong></li>
-<li>**org.springframework.boot.web.reactive.context.ReactiveWebServerApplicationContext#onRefresh() **</li>
-<li><strong>org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext#onRefresh()</strong></li>
-<li><strong>org.springframework.web.context.support.StaticWebApplicationContext#onRefresh()</strong></li>
+<li>org.springframework.web.context.support.AbstractRefreshableWebApplicationContext#onRefresh()</li>
+<li>org.springframework.web.context.support.GenericWebApplicationContext#onRefresh()</li>
+<li>org.springframework.boot.web.reactive.context.ReactiveWebServerApplicationContext#onRefresh()</li>
+<li>org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext#onRefresh()</li>
+<li>org.springframework.web.context.support.StaticWebApplicationContext#onRefresh()</li>
 </ul>
-<h3 id="Spring-事件监听器注册阶段"><strong>Spring 事件监听器注册阶段</strong></h3>
-<h4 id="AbstractApplicationContext-registerListeners---方法"><strong>AbstractApplicationContext#registerListeners() 方法</strong></h4>
+<h3 id="Spring-事件监听器注册阶段">Spring 事件监听器注册阶段</h3>
+<h4 id="AbstractApplicationContext-registerListeners---方法">AbstractApplicationContext#registerListeners() 方法</h4>
 <ul>
-<li><strong>添加当前应用上下文所关联的 ApplicationListener 对象（集合）</strong>
-<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-ln">1</span><span class="highlight-cl">// Register statically specified listeners first.
-</span></span><span class="highlight-line"><span class="highlight-ln">2</span><span class="highlight-cl">for (ApplicationListener&lt;?&gt; listener : getApplicationListeners()) {
-</span></span><span class="highlight-line"><span class="highlight-ln">3</span><span class="highlight-cl"> &nbsp; &nbsp;getApplicationEventMulticaster().addApplicationListener(listener);
-</span></span><span class="highlight-line"><span class="highlight-ln">4</span><span class="highlight-cl">}
+<li>
+<p>添加当前应用上下文所关联的 ApplicationListener 对象（集合）</p>
+<pre><code class="language-java highlight-chroma"><span class="highlight-line"><span class="highlight-ln">1</span><span class="highlight-cl"><span class="highlight-c1">// Register statically specified listeners first.
+</span></span></span><span class="highlight-line"><span class="highlight-ln">2</span><span class="highlight-cl"><span class="highlight-c1"></span><span class="highlight-k">for</span> <span class="highlight-o">(</span><span class="highlight-n">ApplicationListener</span><span class="highlight-o">&lt;?&gt;</span> <span class="highlight-n">listener</span> <span class="highlight-o">:</span> <span class="highlight-n">getApplicationListeners</span><span class="highlight-o">())</span> <span class="highlight-o">{</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">3</span><span class="highlight-cl">    <span class="highlight-n">getApplicationEventMulticaster</span><span class="highlight-o">().</span><span class="highlight-na">addApplicationListener</span><span class="highlight-o">(</span><span class="highlight-n">listener</span><span class="highlight-o">);</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">4</span><span class="highlight-cl"><span class="highlight-o">}</span>
 </span></span></code></pre>
 </li>
-<li><strong>添加 BeanFactory 所注册 ApplicationListener Beans</strong>
-<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-ln">1</span><span class="highlight-cl">// Do not initialize FactoryBeans here: We need to leave all regular beans
-</span></span><span class="highlight-line"><span class="highlight-ln">2</span><span class="highlight-cl">// uninitialized to let post-processors apply to them!
-</span></span><span class="highlight-line"><span class="highlight-ln">3</span><span class="highlight-cl">String[] listenerBeanNames = getBeanNamesForType(ApplicationListener.class, true, false);
-</span></span><span class="highlight-line"><span class="highlight-ln">4</span><span class="highlight-cl">for (String listenerBeanName : listenerBeanNames) {
-</span></span><span class="highlight-line"><span class="highlight-ln">5</span><span class="highlight-cl">    getApplicationEventMulticaster().addApplicationListenerBean(listenerBeanName);
-</span></span><span class="highlight-line"><span class="highlight-ln">6</span><span class="highlight-cl">}
+<li>
+<p>添加 BeanFactory 所注册 ApplicationListener Beans</p>
+<pre><code class="language-java highlight-chroma"><span class="highlight-line"><span class="highlight-ln">1</span><span class="highlight-cl"><span class="highlight-c1">// Do not initialize FactoryBeans here: We need to leave all regular beans
+</span></span></span><span class="highlight-line"><span class="highlight-ln">2</span><span class="highlight-cl"><span class="highlight-c1">// uninitialized to let post-processors apply to them!
+</span></span></span><span class="highlight-line"><span class="highlight-ln">3</span><span class="highlight-cl"><span class="highlight-c1"></span><span class="highlight-n">String</span><span class="highlight-o">[]</span> <span class="highlight-n">listenerBeanNames</span> <span class="highlight-o">=</span> <span class="highlight-n">getBeanNamesForType</span><span class="highlight-o">(</span><span class="highlight-n">ApplicationListener</span><span class="highlight-o">.</span><span class="highlight-na">class</span><span class="highlight-o">,</span> <span class="highlight-kc">true</span><span class="highlight-o">,</span> <span class="highlight-kc">false</span><span class="highlight-o">);</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">4</span><span class="highlight-cl"><span class="highlight-k">for</span> <span class="highlight-o">(</span><span class="highlight-n">String</span> <span class="highlight-n">listenerBeanName</span> <span class="highlight-o">:</span> <span class="highlight-n">listenerBeanNames</span><span class="highlight-o">)</span> <span class="highlight-o">{</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">5</span><span class="highlight-cl">    <span class="highlight-n">getApplicationEventMulticaster</span><span class="highlight-o">().</span><span class="highlight-na">addApplicationListenerBean</span><span class="highlight-o">(</span><span class="highlight-n">listenerBeanName</span><span class="highlight-o">);</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">6</span><span class="highlight-cl"><span class="highlight-o">}</span>
 </span></span></code></pre>
 </li>
-<li><strong>广播早期 Spring 事件</strong>
-<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-ln">1</span><span class="highlight-cl">// Publish early application events now that we finally have a multicaster...
-</span></span><span class="highlight-line"><span class="highlight-ln">2</span><span class="highlight-cl">Set&lt;ApplicationEvent&gt; earlyEventsToProcess = this.earlyApplicationEvents;
-</span></span><span class="highlight-line"><span class="highlight-ln">3</span><span class="highlight-cl">this.earlyApplicationEvents = null;
-</span></span><span class="highlight-line"><span class="highlight-ln">4</span><span class="highlight-cl">if (earlyEventsToProcess != null) {
-</span></span><span class="highlight-line"><span class="highlight-ln">5</span><span class="highlight-cl">    for (ApplicationEvent earlyEvent : earlyEventsToProcess) {
-</span></span><span class="highlight-line"><span class="highlight-ln">6</span><span class="highlight-cl">        getApplicationEventMulticaster().multicastEvent(earlyEvent);
-</span></span><span class="highlight-line"><span class="highlight-ln">7</span><span class="highlight-cl">    }
-</span></span><span class="highlight-line"><span class="highlight-ln">8</span><span class="highlight-cl">}
+<li>
+<p>广播早期 Spring 事件</p>
+<pre><code class="language-java highlight-chroma"><span class="highlight-line"><span class="highlight-ln">1</span><span class="highlight-cl"><span class="highlight-c1">// Publish early application events now that we finally have a multicaster...
+</span></span></span><span class="highlight-line"><span class="highlight-ln">2</span><span class="highlight-cl"><span class="highlight-c1"></span><span class="highlight-n">Set</span><span class="highlight-o">&lt;</span><span class="highlight-n">ApplicationEvent</span><span class="highlight-o">&gt;</span> <span class="highlight-n">earlyEventsToProcess</span> <span class="highlight-o">=</span> <span class="highlight-k">this</span><span class="highlight-o">.</span><span class="highlight-na">earlyApplicationEvents</span><span class="highlight-o">;</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">3</span><span class="highlight-cl"><span class="highlight-k">this</span><span class="highlight-o">.</span><span class="highlight-na">earlyApplicationEvents</span> <span class="highlight-o">=</span> <span class="highlight-kc">null</span><span class="highlight-o">;</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">4</span><span class="highlight-cl"><span class="highlight-k">if</span> <span class="highlight-o">(</span><span class="highlight-n">earlyEventsToProcess</span> <span class="highlight-o">!=</span> <span class="highlight-kc">null</span><span class="highlight-o">)</span> <span class="highlight-o">{</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">5</span><span class="highlight-cl">    <span class="highlight-k">for</span> <span class="highlight-o">(</span><span class="highlight-n">ApplicationEvent</span> <span class="highlight-n">earlyEvent</span> <span class="highlight-o">:</span> <span class="highlight-n">earlyEventsToProcess</span><span class="highlight-o">)</span> <span class="highlight-o">{</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">6</span><span class="highlight-cl">        <span class="highlight-n">getApplicationEventMulticaster</span><span class="highlight-o">().</span><span class="highlight-na">multicastEvent</span><span class="highlight-o">(</span><span class="highlight-n">earlyEvent</span><span class="highlight-o">);</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">7</span><span class="highlight-cl">    <span class="highlight-o">}</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">8</span><span class="highlight-cl"><span class="highlight-o">}</span>
 </span></span></code></pre>
 </li>
 </ul>
-<h3 id="BeanFactory-初始化完成阶段"><strong>BeanFactory 初始化完成阶段</strong></h3>
-<h4 id="AbstractApplicationContext-finishBeanFactoryInitialization-ConfigurableListableBeanFactory--方法"><strong>AbstractApplicationContext#finishBeanFactoryInitialization(ConfigurableListableBeanFactory) 方法</strong></h4>
+<h3 id="BeanFactory-初始化完成阶段">BeanFactory 初始化完成阶段</h3>
+<h4 id="AbstractApplicationContext-finishBeanFactoryInitialization-ConfigurableListableBeanFactory--方法">AbstractApplicationContext#finishBeanFactoryInitialization(ConfigurableListableBeanFactory) 方法</h4>
 <ul>
 <li>
-<p><strong>BeanFactory 关联 ConversionService Bean，如果存在</strong></p>
-<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-ln">1</span><span class="highlight-cl">// Initialize conversion service for this context.
-</span></span><span class="highlight-line"><span class="highlight-ln">2</span><span class="highlight-cl">if (beanFactory.containsBean(CONVERSION_SERVICE_BEAN_NAME) &amp;&amp;
-</span></span><span class="highlight-line"><span class="highlight-ln">3</span><span class="highlight-cl">    beanFactory.isTypeMatch(CONVERSION_SERVICE_BEAN_NAME, ConversionService.class)) {
-</span></span><span class="highlight-line"><span class="highlight-ln">4</span><span class="highlight-cl">    beanFactory.setConversionService(
-</span></span><span class="highlight-line"><span class="highlight-ln">5</span><span class="highlight-cl">        beanFactory.getBean(CONVERSION_SERVICE_BEAN_NAME, ConversionService.class));
-</span></span><span class="highlight-line"><span class="highlight-ln">6</span><span class="highlight-cl">}
+<p>BeanFactory 关联 ConversionService Bean，如果存在</p>
+<pre><code class="language-java highlight-chroma"><span class="highlight-line"><span class="highlight-ln">1</span><span class="highlight-cl"><span class="highlight-c1">// Initialize conversion service for this context.
+</span></span></span><span class="highlight-line"><span class="highlight-ln">2</span><span class="highlight-cl"><span class="highlight-c1"></span><span class="highlight-k">if</span> <span class="highlight-o">(</span><span class="highlight-n">beanFactory</span><span class="highlight-o">.</span><span class="highlight-na">containsBean</span><span class="highlight-o">(</span><span class="highlight-n">CONVERSION_SERVICE_BEAN_NAME</span><span class="highlight-o">)</span> <span class="highlight-o">&amp;&amp;</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">3</span><span class="highlight-cl">    <span class="highlight-n">beanFactory</span><span class="highlight-o">.</span><span class="highlight-na">isTypeMatch</span><span class="highlight-o">(</span><span class="highlight-n">CONVERSION_SERVICE_BEAN_NAME</span><span class="highlight-o">,</span> <span class="highlight-n">ConversionService</span><span class="highlight-o">.</span><span class="highlight-na">class</span><span class="highlight-o">))</span> <span class="highlight-o">{</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">4</span><span class="highlight-cl">    <span class="highlight-n">beanFactory</span><span class="highlight-o">.</span><span class="highlight-na">setConversionService</span><span class="highlight-o">(</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">5</span><span class="highlight-cl">        <span class="highlight-n">beanFactory</span><span class="highlight-o">.</span><span class="highlight-na">getBean</span><span class="highlight-o">(</span><span class="highlight-n">CONVERSION_SERVICE_BEAN_NAME</span><span class="highlight-o">,</span> <span class="highlight-n">ConversionService</span><span class="highlight-o">.</span><span class="highlight-na">class</span><span class="highlight-o">));</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">6</span><span class="highlight-cl"><span class="highlight-o">}</span>
 </span></span></code></pre>
 </li>
 <li>
-<p><strong>添加 StringValueResolver 对象</strong></p>
-<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-ln">1</span><span class="highlight-cl">if (!beanFactory.hasEmbeddedValueResolver()) {
-</span></span><span class="highlight-line"><span class="highlight-ln">2</span><span class="highlight-cl">    beanFactory.addEmbeddedValueResolver(strVal -&gt; getEnvironment().resolvePlaceholders(strVal));
-</span></span><span class="highlight-line"><span class="highlight-ln">3</span><span class="highlight-cl">}
+<p>添加 StringValueResolver 对象</p>
+<pre><code class="language-java highlight-chroma"><span class="highlight-line"><span class="highlight-ln">1</span><span class="highlight-cl"><span class="highlight-k">if</span> <span class="highlight-o">(!</span><span class="highlight-n">beanFactory</span><span class="highlight-o">.</span><span class="highlight-na">hasEmbeddedValueResolver</span><span class="highlight-o">())</span> <span class="highlight-o">{</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">2</span><span class="highlight-cl">    <span class="highlight-n">beanFactory</span><span class="highlight-o">.</span><span class="highlight-na">addEmbeddedValueResolver</span><span class="highlight-o">(</span><span class="highlight-n">strVal</span> <span class="highlight-o">-&gt;</span> <span class="highlight-n">getEnvironment</span><span class="highlight-o">().</span><span class="highlight-na">resolvePlaceholders</span><span class="highlight-o">(</span><span class="highlight-n">strVal</span><span class="highlight-o">));</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">3</span><span class="highlight-cl"><span class="highlight-o">}</span>
 </span></span></code></pre>
 </li>
 <li>
-<p><strong>依赖查找 LoadTimeWeaverAware Bean</strong></p>
+<p>依赖查找 LoadTimeWeaverAware Bean</p>
 </li>
 <li>
-<p><strong>BeanFactory 临时 ClassLoader 置为 null</strong></p>
-<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-ln">1</span><span class="highlight-cl">// Stop using the temporary ClassLoader for type matching.
-</span></span><span class="highlight-line"><span class="highlight-ln">2</span><span class="highlight-cl">beanFactory.setTempClassLoader(null);
+<p>BeanFactory 临时 ClassLoader 置为 null</p>
+<pre><code class="language-java highlight-chroma"><span class="highlight-line"><span class="highlight-ln">1</span><span class="highlight-cl"><span class="highlight-c1">// Stop using the temporary ClassLoader for type matching.
+</span></span></span><span class="highlight-line"><span class="highlight-ln">2</span><span class="highlight-cl"><span class="highlight-c1"></span><span class="highlight-n">beanFactory</span><span class="highlight-o">.</span><span class="highlight-na">setTempClassLoader</span><span class="highlight-o">(</span><span class="highlight-kc">null</span><span class="highlight-o">);</span>
 </span></span></code></pre>
 </li>
 <li>
-<p><strong>BeanFactory 冻结配置</strong></p>
+<p>BeanFactory 冻结配置</p>
 <blockquote>
-<p><strong>org.springframework.beans.factory.support.DefaultListableBeanFactory#freezeConfiguration</strong></p>
+<p>org.springframework.beans.factory.support.DefaultListableBeanFactory#freezeConfiguration</p>
 </blockquote>
-<pre><code class="highlight-chroma"><span class="highlight-line"><span class="highlight-ln">1</span><span class="highlight-cl">this.configurationFrozen = true;
-</span></span><span class="highlight-line"><span class="highlight-ln">2</span><span class="highlight-cl">this.frozenBeanDefinitionNames = StringUtils.toStringArray(this.beanDefinitionNames);
+<pre><code class="language-java highlight-chroma"><span class="highlight-line"><span class="highlight-ln">1</span><span class="highlight-cl"><span class="highlight-k">this</span><span class="highlight-o">.</span><span class="highlight-na">configurationFrozen</span> <span class="highlight-o">=</span> <span class="highlight-kc">true</span><span class="highlight-o">;</span>
+</span></span><span class="highlight-line"><span class="highlight-ln">2</span><span class="highlight-cl"><span class="highlight-k">this</span><span class="highlight-o">.</span><span class="highlight-na">frozenBeanDefinitionNames</span> <span class="highlight-o">=</span> <span class="highlight-n">StringUtils</span><span class="highlight-o">.</span><span class="highlight-na">toStringArray</span><span class="highlight-o">(</span><span class="highlight-k">this</span><span class="highlight-o">.</span><span class="highlight-na">beanDefinitionNames</span><span class="highlight-o">);</span>
 </span></span></code></pre>
 </li>
 <li>
-<p><strong>BeanFactory 初始化非延迟单例 Beans</strong></p>
+<p>BeanFactory 初始化非延迟单例 Beans</p>
 <blockquote>
-<p><strong>org.springframework.beans.factory.config.ConfigurableListableBeanFactory#preInstantiateSingletons</strong></p>
-<p><strong>实例化所有剩余的（非延迟初始化）singleton 模式的 Beans</strong></p>
-<p><strong>Prototype （原生）模式的 Bean 在使用的时候， Spring 会根据注册的 BeanDefinition 每次都初始化一个新的对象，然后这个对象会脱管 Spring，Spring 不会管理其完整的生命周期</strong></p>
-</blockquote>
-</li>
-</ul>
-<h3 id="Spring-应用上下刷新完成阶段"><strong>Spring 应用上下刷新完成阶段</strong></h3>
-<h4 id="AbstractApplicationContext-finishRefresh---方法"><strong>AbstractApplicationContext#finishRefresh() 方法</strong></h4>
-<ul>
-<li>
-<p><strong>清除 ResourceLoader 缓存 - clearResourceCaches() @since 5.0</strong></p>
-<blockquote>
-<p><strong>Clear context-level resource caches (such as ASM metadata from scanning).</strong></p>
-<p><strong>清除上下文级别的资源缓存（例如扫描中的 ASM 元数据）。</strong></p>
+<p>org.springframework.beans.factory.config.ConfigurableListableBeanFactory#preInstantiateSingletons</p>
+<p>实例化所有剩余的（非延迟初始化）singleton 模式的 Beans</p>
+<p>Prototype （原生）模式的 Bean 在使用的时候， Spring 会根据注册的 BeanDefinition 每次都初始化一个新的对象，然后这个对象会脱管 Spring，Spring 不会管理其完整的生命周期</p>
 </blockquote>
 </li>
+</ul>
+<h3 id="Spring-应用上下刷新完成阶段">Spring 应用上下刷新完成阶段</h3>
+<h4 id="AbstractApplicationContext-finishRefresh---方法">AbstractApplicationContext#finishRefresh() 方法</h4>
+<ul>
 <li>
-<p><strong>初始化 LifecycleProcessor 对象 - initLifecycleProcessor()</strong></p>
+<p>清除 ResourceLoader 缓存 - clearResourceCaches() @since 5.0</p>
+<blockquote>
+<p>Clear context-level resource caches (such as ASM metadata from scanning).</p>
+<p>清除上下文级别的资源缓存（例如扫描中的 ASM 元数据）。</p>
+</blockquote>
+</li>
+<li>
+<p>初始化 LifecycleProcessor 对象 - initLifecycleProcessor()</p>
 <blockquote>
 <ol>
-<li>**判断当前上下文是否自定义了 bean="lifecycleProcessor" 的 LifecycleProcessor **</li>
-<li><strong>如果没有自定义的 LifecycleProcessor 对象，则使用默认的 DefaultLifecycleProcessor</strong></li>
+<li>判断当前上下文是否自定义了 bean="lifecycleProcessor" 的 LifecycleProcessor</li>
+<li>如果没有自定义的 LifecycleProcessor 对象，则使用默认的 DefaultLifecycleProcessor</li>
 </ol>
 </blockquote>
 </li>
 <li>
-<p><strong>调用 LifecycleProcessor#onRefresh() 方法</strong></p>
+<p>调用 LifecycleProcessor#onRefresh() 方法</p>
 </li>
 <li>
-<p>**发布 Spring 应用上下文已刷新事件 - ContextRefreshedEvent **</p>
+<p>发布 Spring 应用上下文已刷新事件 - ContextRefreshedEvent</p>
 </li>
 <li>
-<p><strong>向 MBeanServer 托管 Live Beans</strong></p>
+<p>向 MBeanServer 托管 Live Beans</p>
 <blockquote>
-<p><strong>外部化配置项包含 “spring.liveBeansView.mbeanDomain” 时，托管 Live Beans</strong></p>
+<p>外部化配置项包含 “spring.liveBeansView.mbeanDomain” 时，托管 Live Beans</p>
 </blockquote>
 </li>
 </ul>
-<h3 id="Spring-应用上下文启动阶段"><strong>Spring 应用上下文启动阶段</strong></h3>
-<h4 id="AbstractApplicationContext-start---方法"><strong>AbstractApplicationContext#start() 方法</strong></h4>
+<h3 id="Spring-应用上下文启动阶段">Spring 应用上下文启动阶段</h3>
+<h4 id="AbstractApplicationContext-start---方法">AbstractApplicationContext#start() 方法</h4>
 <ul>
-<li><strong>启动 LifecycleProcessor</strong>
+<li>
+<p>启动 LifecycleProcessor</p>
 <ul>
-<li><strong>依赖查找 Lifecycle Beans</strong></li>
-<li>**启动 Lifecycle Beans **</li>
+<li>依赖查找 Lifecycle Beans</li>
+<li>启动 Lifecycle Beans</li>
 </ul>
 </li>
-<li><strong>发布 Spring 应用上下文已启动事件 - ContextStartedEvent</strong></li>
+<li>
+<p>发布 Spring 应用上下文已启动事件 - ContextStartedEvent</p>
+</li>
 </ul>
-<h3 id="Spring-应用上下文停止阶段"><strong>Spring 应用上下文停止阶段</strong></h3>
-<h4 id="AbstractApplicationContext-close---方法"><strong>AbstractApplicationContext#close() 方法</strong></h4>
+<h3 id="Spring-应用上下文停止阶段">Spring 应用上下文停止阶段</h3>
+<h4 id="AbstractApplicationContext-close---方法">AbstractApplicationContext#close() 方法</h4>
 <ul>
-<li><strong>状态标识：active(false)、closed(true)</strong></li>
-<li>**Live Beans JMX 撤销托管 **
+<li>
+<p>状态标识：active(false)、closed(true)</p>
+</li>
+<li>
+<p>Live Beans JMX 撤销托管</p>
 <ul>
-<li><strong>LiveBeansView.unregisterApplicationContext(ConfigurableApplicationContext)</strong></li>
+<li>LiveBeansView.unregisterApplicationContext(ConfigurableApplicationContext)</li>
 </ul>
 </li>
-<li><strong>发布 Spring 应用上下文已关闭事件 - ContextClosedEvent</strong></li>
-<li><strong>关闭 LifecycleProcessor</strong>
+<li>
+<p>发布 Spring 应用上下文已关闭事件 - ContextClosedEvent</p>
+</li>
+<li>
+<p>关闭 LifecycleProcessor</p>
 <ul>
-<li><strong>依赖查找 Lifecycle Beans</strong></li>
-<li><strong>停止 Lifecycle Beans</strong></li>
+<li>依赖查找 Lifecycle Beans</li>
+<li>停止 Lifecycle Beans</li>
 </ul>
 </li>
-<li><strong>销毁 Spring Beans</strong></li>
-<li><strong>关闭 BeanFactory</strong></li>
-<li><strong>回调 onClose()</strong>
+<li>
+<p>销毁 Spring Beans</p>
+</li>
+<li>
+<p>关闭 BeanFactory</p>
+</li>
+<li>
+<p>回调 onClose()</p>
 <blockquote>
-<p><strong>默认实现为空，允许子类覆盖实现</strong></p>
+<p>默认实现为空，允许子类覆盖实现</p>
 </blockquote>
 </li>
-<li><strong>注册 Shutdown Hook 线程（如果曾注册）</strong></li>
+<li>
+<p>注册 Shutdown Hook 线程（如果曾注册）</p>
+</li>
 </ul>
                     <div>
                         <hr>
@@ -652,7 +697,7 @@
     
 </div>
 <script type="text/javascript"
-        src="https://forzenfox.github.io/skins/Bubble/js/TweenMax.min.js?1682844075131"
+        src="https://forzenfox.github.io/skins/Bubble/js/TweenMax.min.js?1685018572608"
         charset="utf-8"></script>
 <footer class="footer">
     <div class="wrapper">
@@ -693,10 +738,10 @@
   }
 </script>
 <script type="text/javascript"
-        src="https://forzenfox.github.io/skins/Bubble/js/common.min.js?1682844075131"
+        src="https://forzenfox.github.io/skins/Bubble/js/common.min.js?1685018572608"
         charset="utf-8"></script>
 <script type="text/javascript"
-        src="https://forzenfox.github.io/skins/Bubble/js/circleMagic.min.js?1682844075131"
+        src="https://forzenfox.github.io/skins/Bubble/js/circleMagic.min.js?1685018572608"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
@@ -733,7 +778,7 @@
     </svg>
 
 <script type="text/javascript">
-    Util.addScript('https://forzenfox.github.io/js/page.min.js?1682844075131', 'soloPageScript')
+    Util.addScript('https://forzenfox.github.io/js/page.min.js?1685018572608', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1648886248605",
@@ -753,4 +798,4 @@
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 25ms, 2023/05/03 16:48:56 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 29ms, 2023/06/07 20:03:48 -->

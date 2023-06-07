@@ -6,115 +6,107 @@
     <atom:link href="https://forzenfox.github.io/rss.xml" rel="self" type="application/rss+xml"/>
     <description>就是你小子悄悄咪咪把bug写出来的？</description>
     <generator>Solo, v4.4.0, https://b3log.org/solo</generator>
-    <lastBuildDate>Wed, 03 May 2023 16:48:56 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 07 Jun 2023 20:03:48 +0800</lastBuildDate>
     <language>zh-cn</language>
     <item>
-      <title>使用 Nginx 做代理服务器实现上传限速</title>
-      <link>https://forzenfox.github.io/articles/2023/05/03/1683102975873.html</link>
+      <title>JVM 学习笔记 - 垃圾回收器</title>
+      <link>https://forzenfox.github.io/articles/2023/06/07/1686139215959.html</link>
       <description/>
       <author>forzenfox</author>
-      <guid>https://forzenfox.github.io/articles/2023/05/03/1683102975873.html</guid>
-      <category>实战</category>
-      <category>Nginx</category>
-      <category>Docker</category>
-      <pubDate>Wed, 03 May 2023 16:36:15 +0800</pubDate>
-    </item>
-    <item>
-      <title>如何实现在容器内部限速</title>
-      <link>https://forzenfox.github.io/articles/2023/05/03/1683102869814.html</link>
-      <description/>
-      <author>forzenfox</author>
-      <guid>https://forzenfox.github.io/articles/2023/05/03/1683102869814.html</guid>
-      <category>Linux</category>
-      <category>实战</category>
-      <category>Docker</category>
-      <pubDate>Wed, 03 May 2023 16:34:29 +0800</pubDate>
-    </item>
-    <item>
-      <title>Java 8 - CompletableFuture</title>
-      <link>https://forzenfox.github.io/articles/2022/04/26/1650947125974.html</link>
-      <description/>
-      <author>forzenfox</author>
-      <guid>https://forzenfox.github.io/articles/2022/04/26/1650947125974.html</guid>
-      <category>多线程</category>
-      <category>java</category>
-      <pubDate>Tue, 26 Apr 2022 12:25:26 +0800</pubDate>
-    </item>
-    <item>
-      <title>Spring Framework 学习笔记 - Spring 应用上下文生命周期</title>
-      <link>https://forzenfox.github.io/articles/2022/04/02/1648886248605.html</link>
-      <description/>
-      <author>forzenfox</author>
-      <guid>https://forzenfox.github.io/articles/2022/04/02/1648886248605.html</guid>
-      <category>java</category>
-      <category>SpringFramework</category>
-      <category>学习笔记</category>
-      <pubDate>Sat, 02 Apr 2022 15:57:28 +0800</pubDate>
-    </item>
-    <item>
-      <title>SQL - 事务</title>
-      <link>https://forzenfox.github.io/articles/2022/03/13/1647154841949.html</link>
-      <description/>
-      <author>forzenfox</author>
-      <guid>https://forzenfox.github.io/articles/2022/03/13/1647154841949.html</guid>
-      <category>Mysql</category>
-      <category>sql</category>
-      <category>数据库</category>
-      <pubDate>Sun, 13 Mar 2022 15:53:24 +0800</pubDate>
-    </item>
-    <item>
-      <title>SQL - 索引</title>
-      <link>https://forzenfox.github.io/articles/2022/03/13/1647154745757.html</link>
-      <description/>
-      <author>forzenfox</author>
-      <guid>https://forzenfox.github.io/articles/2022/03/13/1647154745757.html</guid>
-      <category>Mysql</category>
-      <category>数据库</category>
-      <category>sql</category>
-      <pubDate>Sun, 13 Mar 2022 14:59:37 +0800</pubDate>
-    </item>
-    <item>
-      <title>java 并发编程学习笔记</title>
-      <link>https://forzenfox.github.io/articles/2022/03/13/1647154631868.html</link>
-      <description/>
-      <author>forzenfox</author>
-      <guid>https://forzenfox.github.io/articles/2022/03/13/1647154631868.html</guid>
-      <category>多线程</category>
+      <guid>https://forzenfox.github.io/articles/2023/06/07/1686139215959.html</guid>
       <category>学习笔记</category>
       <category>java</category>
-      <pubDate>Sun, 13 Mar 2022 14:57:11 +0800</pubDate>
+      <pubDate>Wed, 07 Jun 2023 20:00:16 +0800</pubDate>
     </item>
     <item>
-      <title>SQL学习笔记 - sql执行过程</title>
-      <link>https://forzenfox.github.io/articles/2021/11/05/1636107625790.html</link>
+      <title>JVM 学习笔记 - 垃圾回收</title>
+      <link>https://forzenfox.github.io/articles/2023/06/07/1686139190355.html</link>
       <description/>
       <author>forzenfox</author>
-      <guid>https://forzenfox.github.io/articles/2021/11/05/1636107625790.html</guid>
-      <category>sql</category>
-      <category>数据库</category>
-      <category>Mysql</category>
+      <guid>https://forzenfox.github.io/articles/2023/06/07/1686139190355.html</guid>
       <category>学习笔记</category>
-      <pubDate>Sun, 13 Mar 2022 14:48:33 +0800</pubDate>
-    </item>
-    <item>
-      <title>screw - 简洁好用的数据库表结构文档工具</title>
-      <link>https://forzenfox.github.io/articles/2021/11/17/1637115554239.html</link>
-      <description/>
-      <author>forzenfox</author>
-      <guid>https://forzenfox.github.io/articles/2021/11/17/1637115554239.html</guid>
-      <category>工具</category>
-      <category>开源项目</category>
-      <category>screw</category>
-      <pubDate>Sun, 13 Mar 2022 12:30:05 +0800</pubDate>
-    </item>
-    <item>
-      <title>【转载】使用 Lambda 表达式的正确姿势</title>
-      <link>https://forzenfox.github.io/articles/2021/11/18/1637220305162.html</link>
-      <description/>
-      <author>forzenfox</author>
-      <guid>https://forzenfox.github.io/articles/2021/11/18/1637220305162.html</guid>
       <category>java</category>
-      <pubDate>Fri, 19 Nov 2021 12:32:06 +0800</pubDate>
+      <pubDate>Wed, 07 Jun 2023 19:59:50 +0800</pubDate>
+    </item>
+    <item>
+      <title>JVM 学习笔记 - String</title>
+      <link>https://forzenfox.github.io/articles/2023/06/07/1686139148432.html</link>
+      <description/>
+      <author>forzenfox</author>
+      <guid>https://forzenfox.github.io/articles/2023/06/07/1686139148432.html</guid>
+      <category>学习笔记</category>
+      <category>java</category>
+      <pubDate>Wed, 07 Jun 2023 19:59:08 +0800</pubDate>
+    </item>
+    <item>
+      <title>JVM 学习笔记 - 执行引擎</title>
+      <link>https://forzenfox.github.io/articles/2023/06/07/1686139118278.html</link>
+      <description/>
+      <author>forzenfox</author>
+      <guid>https://forzenfox.github.io/articles/2023/06/07/1686139118278.html</guid>
+      <category>java</category>
+      <category>学习笔记</category>
+      <pubDate>Wed, 07 Jun 2023 19:58:38 +0800</pubDate>
+    </item>
+    <item>
+      <title>JVM 学习笔记 - 直接内存</title>
+      <link>https://forzenfox.github.io/articles/2023/06/07/1686139087173.html</link>
+      <description/>
+      <author>forzenfox</author>
+      <guid>https://forzenfox.github.io/articles/2023/06/07/1686139087173.html</guid>
+      <category>学习笔记</category>
+      <category>java</category>
+      <pubDate>Wed, 07 Jun 2023 19:58:07 +0800</pubDate>
+    </item>
+    <item>
+      <title>JVM 学习笔记 - 对象实例化</title>
+      <link>https://forzenfox.github.io/articles/2023/06/07/1686139059973.html</link>
+      <description/>
+      <author>forzenfox</author>
+      <guid>https://forzenfox.github.io/articles/2023/06/07/1686139059973.html</guid>
+      <category>java</category>
+      <category>学习笔记</category>
+      <pubDate>Wed, 07 Jun 2023 19:57:40 +0800</pubDate>
+    </item>
+    <item>
+      <title>JVM 学习笔记 - 方法区</title>
+      <link>https://forzenfox.github.io/articles/2023/06/07/1686139025589.html</link>
+      <description/>
+      <author>forzenfox</author>
+      <guid>https://forzenfox.github.io/articles/2023/06/07/1686139025589.html</guid>
+      <category>学习笔记</category>
+      <category>java</category>
+      <pubDate>Wed, 07 Jun 2023 19:57:05 +0800</pubDate>
+    </item>
+    <item>
+      <title>JVM 学习笔记 - 堆</title>
+      <link>https://forzenfox.github.io/articles/2023/06/07/1686138963923.html</link>
+      <description/>
+      <author>forzenfox</author>
+      <guid>https://forzenfox.github.io/articles/2023/06/07/1686138963923.html</guid>
+      <category>java</category>
+      <category>学习笔记</category>
+      <pubDate>Wed, 07 Jun 2023 19:56:03 +0800</pubDate>
+    </item>
+    <item>
+      <title>JVM 学习笔记 - 本地方法栈</title>
+      <link>https://forzenfox.github.io/articles/2023/06/07/1686138924426.html</link>
+      <description/>
+      <author>forzenfox</author>
+      <guid>https://forzenfox.github.io/articles/2023/06/07/1686138924426.html</guid>
+      <category>java</category>
+      <category>学习笔记</category>
+      <pubDate>Wed, 07 Jun 2023 19:55:24 +0800</pubDate>
+    </item>
+    <item>
+      <title>JVM 学习笔记 - 虚拟机栈</title>
+      <link>https://forzenfox.github.io/articles/2023/06/07/1686138880865.html</link>
+      <description/>
+      <author>forzenfox</author>
+      <guid>https://forzenfox.github.io/articles/2023/06/07/1686138880865.html</guid>
+      <category>java</category>
+      <category>学习笔记</category>
+      <pubDate>Wed, 07 Jun 2023 19:54:40 +0800</pubDate>
     </item>
   </channel>
 </rss>

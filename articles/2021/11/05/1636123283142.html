@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="theme-color" content="#3b3e43"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"/><title>Flyway - 数据库版本控制工具 - 佛系码农</title><meta name="description" content="悄悄咪咪写bug的佛系码农"/><meta property="og:description" content="悄悄咪咪写bug的佛系码农"/>    <meta name="keywords" content="Solo,Java,博客,开源"/><link rel="dns-prefetch" href="https://forzenfox.github.io"/><link rel="dns-prefetch" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://forzenfox.github.io"><link rel="icon" type="image/png" href="https://b3log.org/images/brand/solo-128.png"/><link rel="apple-touch-icon" href="https://b3log.org/images/brand/solo-128.png"><link rel="shortcut icon" type="image/x-icon" href="https://b3log.org/images/brand/solo-128.png"><meta name="copyright" content="B3log"/><meta http-equiv="Window-target" content="_top"/><meta property="og:locale" content="zh_CN"/><meta property="og:title" content="Flyway - 数据库版本控制工具 - 佛系码农"/><meta property="og:site_name" content="佛系码农"/><meta property="og:url"      content="https://forzenfox.github.io/articles/2021/11/05/1636123283142.html?"/><meta property="og:image" content="https://b3log.org/images/brand/solo-128.png"/><link rel="search" type="application/opensearchdescription+xml" title="Flyway - 数据库版本控制工具 - 佛系码农" href="/opensearch.xml"><link href="https://forzenfox.github.io/rss.xml" title="RSS" type="application/rss+xml" rel="alternate"/><link rel="manifest" href="https://forzenfox.github.io/manifest.json">        <link rel="canonical" href="https://forzenfox.github.io/articles/2021/11/05/1636123283142.html">        <link rel="stylesheet"
-              href="https://forzenfox.github.io/skins/Bubble/css/base.css?1682844075131"/>
+              href="https://forzenfox.github.io/skins/Bubble/css/base.css?1685018572608"/>
             <link rel="prev" title="TDD简述" href="https://forzenfox.github.io/articles/2021/11/05/1636121282332.html">
             <link rel="next" title="screw - 简洁好用的数据库表结构文档工具" href="https://forzenfox.github.io/articles/2021/11/17/1637115554239.html">
     <script src="https://cdn.jsdelivr.net/npm/vditor@3.8.4/dist/js/icons/ant.js" async="" id="vditorIconScript"></script></head>
@@ -44,7 +44,7 @@
                 <a href="https://forzenfox.github.io" rel="start"><img class="side__logo" alt="佛系码农" src="https://b3logfile.com/avatar/1636036720949_1636122082221.jpeg?imageView2/1/w/128/h/128/interlace/0/q/100"></a>
 
                 <div class="side__meta">
-                    14 文章 <br>
+                    55 文章 <br>
                     <span data-uvstaturl="https://forzenfox.github.io">0</span> 浏览
                     
                 </div>
@@ -85,7 +85,7 @@
         <div class="ft__center">
             <div class="article__meta">
                 <time>
-                    2021-11-09
+                    2023-06-05
                 </time>
                 /
                     <a rel="tag"
@@ -310,7 +310,7 @@ Migrate 命令不会有任何操作</p>
 <ol>
 <li>
 <p>pom.xml 配置如下：</p>
-<pre><code class="language-xml highlight-chroma"><span class="highlight-line"><span class="highlight-ln"> 1</span><span class="highlight-cl">    <span class="highlight-nt">&lt;properties&gt;</span>
+<pre><code class="language-xml highlight-chroma"><span class="highlight-line"><span class="highlight-ln"> 1</span><span class="highlight-cl"><span class="highlight-nt">&lt;properties&gt;</span>
 </span></span><span class="highlight-line"><span class="highlight-ln"> 2</span><span class="highlight-cl">        <span class="highlight-nt">&lt;maven.compiler.source&gt;</span>8<span class="highlight-nt">&lt;/maven.compiler.source&gt;</span>
 </span></span><span class="highlight-line"><span class="highlight-ln"> 3</span><span class="highlight-cl">        <span class="highlight-nt">&lt;maven.compiler.target&gt;</span>8<span class="highlight-nt">&lt;/maven.compiler.target&gt;</span>
 </span></span><span class="highlight-line"><span class="highlight-ln"> 4</span><span class="highlight-cl">        <span class="highlight-nt">&lt;spring.version&gt;</span>4.3.17.RELEASE<span class="highlight-nt">&lt;/spring.version&gt;</span>
@@ -392,7 +392,6 @@ Migrate 命令不会有任何操作</p>
 </span></span><span class="highlight-line"><span class="highlight-ln"> 9</span><span class="highlight-cl">flyway.validateOnMigrate=true
 </span></span><span class="highlight-line"><span class="highlight-ln">10</span><span class="highlight-cl">flyway.cleanDisabled=true
 </span></span><span class="highlight-line"><span class="highlight-ln">11</span><span class="highlight-cl">flyway.cleanOnValidationError=false
-</span></span><span class="highlight-line"><span class="highlight-ln">12</span><span class="highlight-cl">
 </span></span></code></pre>
 </li>
 <li>
@@ -443,7 +442,6 @@ Migrate 命令不会有任何操作</p>
 </span></span><span class="highlight-line"><span class="highlight-ln">44</span><span class="highlight-cl">                <span class="highlight-o">&amp;&amp;</span> <span class="highlight-n">CollectionUtils</span><span class="highlight-o">.</span><span class="highlight-na">isNotEmpty</span><span class="highlight-o">(</span><span class="highlight-n">locations</span><span class="highlight-o">);</span>
 </span></span><span class="highlight-line"><span class="highlight-ln">45</span><span class="highlight-cl">    <span class="highlight-o">}</span>
 </span></span><span class="highlight-line"><span class="highlight-ln">46</span><span class="highlight-cl"><span class="highlight-o">}</span>
-</span></span><span class="highlight-line"><span class="highlight-ln">47</span><span class="highlight-cl">
 </span></span></code></pre>
 </li>
 <li>
@@ -502,8 +500,6 @@ Migrate 命令不会有任何操作</p>
 </span></span><span class="highlight-line"><span class="highlight-ln">52</span><span class="highlight-cl">    <span class="highlight-o">}</span>
 </span></span><span class="highlight-line"><span class="highlight-ln">53</span><span class="highlight-cl">
 </span></span><span class="highlight-line"><span class="highlight-ln">54</span><span class="highlight-cl"><span class="highlight-o">}</span>
-</span></span><span class="highlight-line"><span class="highlight-ln">55</span><span class="highlight-cl">
-</span></span><span class="highlight-line"><span class="highlight-ln">56</span><span class="highlight-cl">
 </span></span></code></pre>
 <pre><code class="language-java highlight-chroma"><span class="highlight-line"><span class="highlight-ln">1</span><span class="highlight-cl"><span class="highlight-kd">public</span> <span class="highlight-kd">class</span> <span class="highlight-nc">FlywayCondition</span> <span class="highlight-kd">implements</span> <span class="highlight-n">Condition</span> <span class="highlight-o">{</span>
 </span></span><span class="highlight-line"><span class="highlight-ln">2</span><span class="highlight-cl">
@@ -752,7 +748,7 @@ If Flyway created them, the schemas themselves will as be dropped when cleaning.
     
 </div>
 <script type="text/javascript"
-        src="https://forzenfox.github.io/skins/Bubble/js/TweenMax.min.js?1682844075131"
+        src="https://forzenfox.github.io/skins/Bubble/js/TweenMax.min.js?1685018572608"
         charset="utf-8"></script>
 <footer class="footer">
     <div class="wrapper">
@@ -793,10 +789,10 @@ If Flyway created them, the schemas themselves will as be dropped when cleaning.
   }
 </script>
 <script type="text/javascript"
-        src="https://forzenfox.github.io/skins/Bubble/js/common.min.js?1682844075131"
+        src="https://forzenfox.github.io/skins/Bubble/js/common.min.js?1685018572608"
         charset="utf-8"></script>
 <script type="text/javascript"
-        src="https://forzenfox.github.io/skins/Bubble/js/circleMagic.min.js?1682844075131"
+        src="https://forzenfox.github.io/skins/Bubble/js/circleMagic.min.js?1685018572608"
         charset="utf-8"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.css"/>
 <script async src="https://cdn.jsdelivr.net/npm/kanbanniang@0.2.10/index.js"></script>
@@ -833,7 +829,7 @@ If Flyway created them, the schemas themselves will as be dropped when cleaning.
     </svg>
 
 <script type="text/javascript">
-    Util.addScript('https://forzenfox.github.io/js/page.min.js?1682844075131', 'soloPageScript')
+    Util.addScript('https://forzenfox.github.io/js/page.min.js?1685018572608', 'soloPageScript')
     var page = new Page({
         "commentContentCannotEmptyLabel": "评论不能为空",
         "oId": "1636123283142",
@@ -853,4 +849,4 @@ If Flyway created them, the schemas themselves will as be dropped when cleaning.
 </body>
 </html>
 
-<!-- Generated by Latke (https://github.com/88250/latke) in 21ms, 2023/05/03 16:48:56 -->
+<!-- Generated by Latke (https://github.com/88250/latke) in 27ms, 2023/06/07 20:03:48 -->
