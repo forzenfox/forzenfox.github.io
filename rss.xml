@@ -6,7 +6,7 @@
     <atom:link href="https://forzenfox.github.io/rss.xml" rel="self" type="application/rss+xml"/>
     <description>就是你小子悄悄咪咪把bug写出来的？</description>
     <generator>Solo, v4.4.0, https://b3log.org/solo</generator>
-    <lastBuildDate>Wed, 07 Jun 2023 20:03:48 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 08 Aug 2023 09:51:59 +0800</lastBuildDate>
     <language>zh-cn</language>
     <item>
       <title>JVM 学习笔记 - 垃圾回收器</title>
@@ -14,8 +14,8 @@
       <description/>
       <author>forzenfox</author>
       <guid>https://forzenfox.github.io/articles/2023/06/07/1686139215959.html</guid>
-      <category>学习笔记</category>
       <category>java</category>
+      <category>学习笔记</category>
       <pubDate>Wed, 07 Jun 2023 20:00:16 +0800</pubDate>
     </item>
     <item>
@@ -74,8 +74,8 @@
       <description/>
       <author>forzenfox</author>
       <guid>https://forzenfox.github.io/articles/2023/06/07/1686139025589.html</guid>
-      <category>学习笔记</category>
       <category>java</category>
+      <category>学习笔记</category>
       <pubDate>Wed, 07 Jun 2023 19:57:05 +0800</pubDate>
     </item>
     <item>
@@ -84,8 +84,8 @@
       <description/>
       <author>forzenfox</author>
       <guid>https://forzenfox.github.io/articles/2023/06/07/1686138963923.html</guid>
-      <category>java</category>
       <category>学习笔记</category>
+      <category>java</category>
       <pubDate>Wed, 07 Jun 2023 19:56:03 +0800</pubDate>
     </item>
     <item>
@@ -94,8 +94,8 @@
       <description/>
       <author>forzenfox</author>
       <guid>https://forzenfox.github.io/articles/2023/06/07/1686138924426.html</guid>
-      <category>java</category>
       <category>学习笔记</category>
+      <category>java</category>
       <pubDate>Wed, 07 Jun 2023 19:55:24 +0800</pubDate>
     </item>
     <item>
@@ -104,8 +104,8 @@
       <description/>
       <author>forzenfox</author>
       <guid>https://forzenfox.github.io/articles/2023/06/07/1686138880865.html</guid>
-      <category>java</category>
       <category>学习笔记</category>
+      <category>java</category>
       <pubDate>Wed, 07 Jun 2023 19:54:40 +0800</pubDate>
     </item>
   </channel>
